@@ -15,8 +15,7 @@ table{
 
 /* Static CSS */
 .jumbotron{
-    background-image: url("/assets/images/maarten-van-den-heuvel-400626-unsplash.jpg");
-    background-size: cover;
+    
     color: white;
     font-size: 250%;
     font-family: 'Bungee Inline', cursive;
@@ -26,8 +25,4 @@ table{
 }
 #food-input-card{
     text-align: center
-}
-#fridge-div{
-    background-image: url("/assets/images/refidgeratorPlaceholder.PNG");
-    background-size: cover;
 }
