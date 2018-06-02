@@ -8,6 +8,10 @@ MARK -remember that this is here */
     margin:5px;
     padding: 5px;
 }
+/* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
+table{
+    overflow-y: hidden
+}
 
 /* Static CSS */
 .jumbotron{
@@ -22,4 +26,8 @@ MARK -remember that this is here */
 }
 #food-input-card{
     text-align: center
+}
+#fridge-div{
+    background-image: url("/assets/images/refidgeratorPlaceholder.PNG");
+    background-size: cover;
 }

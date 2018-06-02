@@ -25,8 +25,6 @@
         </h1>
     </div>
     <div class="container">
-
-
         <div class="row">
             <div class="col-lg-5 col-md-6 col-sm-12">
                 <div class="card" id="food-input-card">
@@ -44,8 +42,8 @@
                         <button type="submit" class="btn btn-default btn-success" style="margin: 4px">add to Fridge</button>
                     </form>
                 </div>
-                <div class="card">
-                    <table class="table table-striped">
+                <div class="card" id="fridge-div">
+                    <table class="table table-striped table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">Food</th>
@@ -60,15 +58,27 @@
                 </div>
             </div>
             <!-- The column below will house the recipe sections, the log in and the shopping list -->
+            <!-- 2 cards will be hidden  and one card will show at any time, using javascript to keep the site 
+            branding consistent and navigatable.  -->
             <div class="col-lg-7 col-md-6 col-sm-12" id="work-box">
+                <!-- this  card will be the log in -->
+                <div class="card work-box-card" id="log-in-card">
 
+                </div>
+
+                <!-- this card will display recipes -->
+                <div class="card work-box-card" id="recipe-display">
+
+                </div>
+                <div class=" card work-box-card" id="shopping-list">
+
+                </div>
             </div>
         </div>
-    </div>
-    <!-- SCRIPTS BELOW! -->
+        <!-- SCRIPTS BELOW! -->
 
 
-    <script src="assets/javascript/logic.js"></script>
+        <script src="assets/javascript/logic.js"></script>
 
 </body>
 
