@@ -1,0 +1,28 @@
+/* FONTS
+font-family: 'Bungee Inline', cursive;
+font-family: 'Racing Sans One', cursive; */
+
+/* I created this card CSS for cleanup early-on, it may add some complications in the future if overlooked. 
+MARK -remember that this is here */
+.card {
+    margin:5px;
+    padding: 5px;
+}
+/* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
+table{
+    overflow-y: hidden
+}
+
+/* Static CSS */
+.jumbotron{
+    
+    color: white;
+    font-size: 250%;
+    font-family: 'Bungee Inline', cursive;
+    
+
+ 
+}
+#food-input-card{
+    text-align: center
+}
