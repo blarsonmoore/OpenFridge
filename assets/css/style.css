@@ -27,3 +27,7 @@ table {
 #logo {
     color: white;
 }
+
+#createNewAccount:hover, #signedIn, #signOutBtn {
+    cursor: pointer;
+}
