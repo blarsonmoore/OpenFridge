@@ -9,20 +9,25 @@ MARK -remember that this is here */
     padding: 5px;
 }
 /* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
-table{
-    overflow-y: hidden
+table {
+    overflow-y: hidden;
 }
 
 /* Static CSS */
-.jumbotron{
-    
-    color: white;
+.jumbotron {
+    color: rgb(39, 34, 34);
     font-size: 250%;
     font-family: 'Bungee Inline', cursive;
-    
-
- 
 }
-#food-input-card{
+
+#food-input-card {
     text-align: center
+}
+
+#logo {
+    color: white;
+}
+
+#createNewAccount:hover, #signedIn, #signOutBtn {
+    cursor: pointer;
 }
