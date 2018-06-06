@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 
     <!-- Jquery / Bootstrap / Google Docs Links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -28,10 +29,13 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav">
                 <li>
-                    <a class="nav-link" data-toggle="modal" data-target="#createAccount">Create Account</a>
+                    <a id="createNewAccount" class="nav-link" data-toggle="modal" data-target="#createAccount">Create Account</a>
                 </li>
                 <li>
-                    <a class="nav-link" data-toggle="modal" data-target="#signIn">Sign-In</a>
+                    <a id="signedIn" class="nav-link" data-toggle="modal" data-target="#signInModal">Sign In</a>
+                </li>
+                <li>
+                    <a id="signOutBtn" class="nav-link d-none">Sign Out</a>
                 </li>
             </ul>
         </div>
@@ -50,21 +54,19 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                            <label for="userName">Username</label>
-                            <input type="username" class="form-control" id="userName" aria-describedby="Username" placeholder="UserName">
+                            <label for="userName">Name</label>
+                            <input type="username" class="form-control" id="newAccName" aria-describedby="Username" placeholder="Name">
+                            <label for="email1">Email address</label>
+                            <input type="email" class="form-control" id="newAccEmail" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" id="newAccPassword" placeholder="Password">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button id="newAccount" type="button" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -72,7 +74,7 @@
     <!-- End Modal For New Account-->
 
     <!-- Modal For Sign In-->
-    <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,19 +84,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="sighInForm">
                         <div class="form-group">
-                            <label for="userName">Username</label>
-                            <input type="username" class="form-control" id="signInUserName" aria-describedby="Username" placeholder="UserName">
+                            <label for="userName">Email</label>
+                            <input type="username" class="form-control" id="signInEmail" aria-describedby="Username" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
+                            <label for="newUserPassword">Password</label>
                             <input type="password" class="form-control" id="signInPassword" placeholder="Password">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button id="signInBtn" type="button" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -213,6 +215,8 @@
             </div>
         </div>
         <!-- SCRIPTS BELOW! -->
+        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
         <script src="./assets/javascript/logic.js"></script>
         <script src="./assets/javascript/firebase.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
