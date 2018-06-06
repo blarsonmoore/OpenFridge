@@ -81,6 +81,7 @@ $(document).ready(function () {
                 $("#signOutBtn").removeClass("d-none");
                 $("#signedIn").addClass("d-none");
                 $("#createNewAccount").addClass("d-none");
+                $("#helloUser").text("Hello  " + displayName);
             }
             else {
                 console.log("Not Logged In.");
