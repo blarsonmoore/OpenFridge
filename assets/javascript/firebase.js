@@ -19,6 +19,12 @@ $(document).ready(function () {
   const signInEmail = $("#signInEmail");
   const signInPassword = $("#signInPassword");
 
+  var connectionsRef = database.ref("/connections");
+  var connectedRef = database.ref(".info/connected");
+
+  console.log(connectedRef);
+  console.log(connectionsRef);
+
   // Sign In 
 
   $("#signInBtn").on("click", function (e) {
@@ -39,39 +45,55 @@ $(document).ready(function () {
   // New Account 
 
   $("#newAccount").on("click", function () {
-    const newName = createName.val().trim();
+    const displayName = createName.val().trim();
     const email = createEmail.val().trim();
     const password = createPassword.val().trim();
+
     const auth = firebase.auth();
 
-    console.log(newName);
+    console.log(displayName);
     console.log(email);
     console.log(password);
 
-    const promise = auth.createUserWithEmailAndPassword(email, password);
+    const promise = firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
+      // [END createwithemail]
+      // callSomeFunction(); Optional
+      var user = firebase.auth().currentUser;
+      user.updateProfile({
+        displayName: displayName
+      }).then(function () {
+        // Update successful.
+      }, function (error) {
+        // An error happened.
+      });
+    });
+
+
+    $("#signOutBtn").on("click", function () {
+      firebase.auth().signOut();
+    });
+
+    //Realtime listener
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        console.log(firebaseUser);
+        $("#signOutBtn").removeClass("d-none");
+        $("#signedIn").addClass("d-none");
+        $("#createNewAccount").addClass("d-none");
+      }
+      else {
+        console.log("Not Logged In.");
+        $("#signOutBtn").addClass("d-none");
+        $("#signedIn").removeClass("d-none");
+        $("#createNewAccount").removeClass("d-none");
+      }
+
+    });
   });
-
-  $("#signOutBtn").on("click", function () {
-    firebase.auth().signOut();
+  $("#newAccount").on("click", function () {
+    $("#createAccount").modal('hide');
   });
-
-  //Realtime listener
-
-  firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-      console.log(firebaseUser);
-      $("#signOutBtn").removeClass("d-none");
-      $("#signedIn").addClass("d-none");
-      $("#createNewAccount").addClass("d-none");
-    }
-    else {
-      console.log("Not Logged In.");
-      $("#signOutBtn").addClass("d-none");
-      $("#signedIn").removeClass("d-none");
-      $("#createNewAccount").removeClass("d-none");
-    }
-
-  });
-
 });
+
 
