@@ -8,7 +8,7 @@ $(document).ready(function () {
         $(tab).show();
     }
     $(".recipe-tab").on("click", function () { hideDisplay("#recipe-card") });
-    // $(".log-in-tab").on("click", function () { hideDisplay("#log-in-card") });
+
     $(".shopping-list-tab").on("click", function () { hideDisplay("#shopping-list-card") });
 
 
