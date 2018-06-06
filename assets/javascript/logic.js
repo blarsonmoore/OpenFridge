@@ -13,19 +13,20 @@ $(document).ready(function () {
 });
 
 // Creating a variable that holds an array of all of the search items
-var itemSearch = []; 
+var itemSearch = [];
 
 // EDAMAM API ajax call 
-function recipeGainer(){
+function recipeGainer() {
     var queryURL = "https://api.edamam.com/search?q=" + itemSearch + "&app_id=7b4b7801&app_key=0c479e95104d8a17f3457161abbb98bf&from=0&to=1"
 
     $.ajax({
         url: queryURL,
         method: "GET"
     })
-    .then(function(response) {
-        console.log(queryURL);
+        .then(function (response) {
+            console.log(queryURL);
 
-        console.log(response);
-    })};
+            console.log(response);
+        })
+};
 recipeGainer();
