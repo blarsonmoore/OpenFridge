@@ -71,6 +71,7 @@ $(document).ready(function () {
 
         $("#signOutBtn").on("click", function () {
             firebase.auth().signOut();
+
         });
 
         //Realtime listener
@@ -81,13 +82,15 @@ $(document).ready(function () {
                 $("#signOutBtn").removeClass("d-none");
                 $("#signedIn").addClass("d-none");
                 $("#createNewAccount").addClass("d-none");
-                $("#helloUser").text("Hello  " + displayName);
+                $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
+
             }
             else {
                 console.log("Not Logged In.");
                 $("#signOutBtn").addClass("d-none");
                 $("#signedIn").removeClass("d-none");
                 $("#createNewAccount").removeClass("d-none");
+                $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");;
             }
 
         });

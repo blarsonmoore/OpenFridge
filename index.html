@@ -7,13 +7,17 @@
     <title>Open Fridge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+    <!-- Style sheet was here before -->
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 
     <!-- Jquery / Bootstrap / Google Docs Links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <!-- Moved Style sheet down as a minor test -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Racing+Sans+One" rel="stylesheet">
 </head>
 
@@ -104,10 +108,22 @@
     <!-- End Modal For Sign In-->
 
     <!-- End Navbar HTML -->
-    <div class="jumbotron text-center" style="background-image: url('../assets/images/maarten-van-den-heuvel-400626-unsplash.jpg');
+    <div class="jumbotron text-center" style="background-image: url('assets/images/maarten-van-den-heuvel-400626-unsplash.jpg');
     background-size: cover;">
+        <div class="row">
+            <div class="col-md-9">
 
-        <h1>Open Fridge</h1>
+                <h1>Open Fridge</h1>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-dark bg-info">
+                    <div class="card-body">
+                        <h3> Welcome to OpenFridge</h3>
+                        <h5 id="greet-user">Please Sign in</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="row">
@@ -151,81 +167,75 @@
 
             <div class="col-lg-7 col-md-6 col-sm-12" id="work-box">
 
+
+
+
                 <!-- this card will display recipes -->
                 <div class="card  work-box-card text-center" id="recipe-card">
+                    <!-- <img class="card-img" src="assets/images/brooke-lark-93581-unsplash.jpg" alt="open-fridge"> -->
+                    <!-- <div class="card-img-overlay"> -->
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#display-recipes">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#display-shopping-list">Shopping List</a>
+                            </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link active recipe-tab" href="#">Recipes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link shopping-list-tab" href="#">Shopping List</a>
-                            </li>
                         </ul>
                     </div>
 
-                    <div class="card-body">
-                        <div id="recipe-block">
-                            <!-- This is where we will dump the list of recipe elements from our API -->
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div id="display-recipes" class="container tab-pane active">
+                            <br>
+                            <h3>Recipes</h3>
+                            <p>A place holder for displaying recipes. no ID set yet, </p>
                         </div>
-                    </div>
+                        <div id="display-shopping-list" class="container tab-pane fade">
+                            <br>
+                            <h3>Shopping List</h3>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">List #</th>
+                                        <th scope="col">Ingredient</th>
+                                        <th scope="col">qty needed</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Placeholder one </td>
+                                        <td>.55</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>another item</td>
+                                        <td>55</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                </div>
-                <div class="card  work-box-card text-center" id="shopping-list-card">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs">
+                        <!-- </div> -->
 
-                            <li class="nav-item">
-                                <a class="nav-link recipe-tab" href="#">Recipes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active shopping-list-tab" href="#">Shopping List</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <!-- below is table for our shopping list -->
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">List #</th>
-                                    <th scope="col">Ingredient</th>
-                                    <th scope="col">qty needed</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Placeholder one </td>
-                                    <td>.55</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>another item</td>
-                                    <td>55</td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+
+
                     </div>
                 </div>
+                <!-- SCRIPTS BELOW! -->
+                <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+                <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 
-                <div class=" card work-box-card" id="shopping-list">
-
-                </div>
-
-            </div>
-        </div>
-        <!-- SCRIPTS BELOW! -->
-        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-        
-        <script src="./assets/javascript/firebase.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-            crossorigin="anonymous"></script>
-            <script src="./assets/javascript/logic.js"></script>
+                <script src="./assets/javascript/firebase.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                    crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                    crossorigin="anonymous"></script>
+                <script src="./assets/javascript/logic.js"></script>
 
 </body>
 

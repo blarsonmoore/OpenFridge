@@ -4,6 +4,11 @@ font-family: 'Racing Sans One', cursive; */
 
 /* I created this card CSS for cleanup early-on, it may add some complications in the future if overlooked. 
 MARK -remember that this is here */
+#content {
+    background-image: url("../images/brooke-lark-93581-unsplash.jpg");
+       background-size: cover;
+};
+
 .card {
     margin:5px;
     padding: 5px;
