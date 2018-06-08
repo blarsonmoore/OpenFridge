@@ -1,42 +1,51 @@
 /* FONTS
-font-family: 'Bungee Inline', cursive;
-font-family: 'Racing Sans One', cursive; */
+font-family: 'Anton', sans-serif;
+font-family: 'Pacifico', cursive; */
 
 /* I created this card CSS for cleanup early-on, it may add some complications in the future if overlooked. 
 MARK -remember that this is here */
-#content {
+#display-recipes{
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
-       background-size: cover;
-};
+       background-size: 100% ;
+}
+#welcome-card{
+    width: 13em;
 
+}
 .card {
     margin:5px;
     padding: 5px;
-};
+}
 /* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
 table {
     overflow-y: hidden;
-};
+}
 
 /* Static CSS */
-.jumbotron {
-    color: rgb(39, 34, 34);
-    font-size: 250%;
-    font-family: 'Bungee Inline', cursive;
-};
+.display-2{
+    color: rgb(79, 200, 244);
+    text-shadow: 3px 2px black;
+    font-family: 'Pacifico', cursive;
+    float: left
+}
 
 #food-input-card {
-    text-align: center
-};
+    text-align: center;
+}
 
 #logo {
-    color: white;
-};
+  
+    color: rgb(79, 200, 244);
+    text-shadow: 3px 2px black;
+    font-family: 'Pacifico', cursive;
+}
+}
 
 #createNewAccount:hover, #signedIn, #signOutBtn {
     cursor: pointer;
-};
+}
+
 #helloUser{
     color: white;
     font-size: 20px;
-};
+}
