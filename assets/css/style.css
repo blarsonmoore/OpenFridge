@@ -12,8 +12,9 @@ body{
 }
 .jumbotron{
     border-bottom:  solid;
-
-    
+}
+.nav-link{
+    color:white;
 }
 #display-recipes{
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
@@ -26,6 +27,10 @@ body{
 #welcome-card{
     width: 15em;
     border: solid;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+    
     
 
 }
@@ -41,9 +46,9 @@ table {
 /* Static CSS */
 .display-2{
     color: rgb(79, 200, 244);
-    text-shadow: 3px 2px black;
+    text-shadow: 5px 2px black;
     font-family: 'Pacifico', cursive;
-    float: left
+    
 }
 
 #food-input-card {
@@ -60,7 +65,7 @@ th td {
     text-shadow: 3px 2px black;
     font-family: 'Pacifico', cursive;
 }
-}
+
 
 #createNewAccount:hover, #signedIn, #signOutBtn {
     cursor: pointer;
