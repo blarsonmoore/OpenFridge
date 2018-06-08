@@ -26,12 +26,12 @@ body{
 #welcome-card{
     width: 15em;
     border: solid;
+    
 
 }
 .card {
     font-family: 'Anton', sans-serif;
-    margin:5px;
-    padding: 5px;
+       border: solid;
 }
 /* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
 table {
@@ -48,6 +48,7 @@ table {
 
 #food-input-card {
     text-align: center;
+    padding: 5px;
 }
 th td {
        text-align: center;
