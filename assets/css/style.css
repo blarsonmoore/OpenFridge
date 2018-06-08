@@ -2,17 +2,34 @@
 font-family: 'Anton', sans-serif;
 font-family: 'Pacifico', cursive; */
 
-/* I created this card CSS for cleanup early-on, it may add some complications in the future if overlooked. 
-MARK -remember that this is here */
+body{
+    background-image: url("../images/tileable_wood_texture.png");
+    background-repeat: repeat ;
+
+    /* This pattern is downloaded from www.subtlepatterns.com 
+ If you need more, that's where to get'em. */
+ font-family: 'Anton', sans-serif;
+}
+.jumbotron{
+    border-bottom:  solid;
+
+    
+}
 #display-recipes{
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
        background-size: 100% ;
+       background-position-y: center;
+       /* tag below for working */
+       min-height: 250px;
+       
 }
 #welcome-card{
-    width: 13em;
+    width: 15em;
+    border: solid;
 
 }
 .card {
+    font-family: 'Anton', sans-serif;
     margin:5px;
     padding: 5px;
 }
@@ -31,6 +48,9 @@ table {
 
 #food-input-card {
     text-align: center;
+}
+th td {
+       text-align: center;
 }
 
 #logo {
