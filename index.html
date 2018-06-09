@@ -13,11 +13,12 @@
     <!-- Jquery / Bootstrap / Google Docs Links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
-    <!-- Moved Style sheet down as a minor test -->
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+    <!-- Moved Style sheet down as a minor test -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Racing+Sans+One" rel="stylesheet">
 </head>
 
@@ -136,10 +137,10 @@
                                 <!-- JH created an id of foodlist -->
                                 <input type="text" class="form-control" id="foodList" placeholder="Food">
                             </div>
-                            <div class="col">
-                                <!-- JH created an id of qty -->
-                                <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)">
-                            </div>
+                            <!-- <div class="col"> -->
+                            <!-- JH created an id of qty -->
+                            <!-- <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)"> -->
+                            <!-- </div> -->
                         </div>
                         <!-- JH created an ID of submitBtn -->
                         <button type="submit" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
@@ -227,7 +228,6 @@
                     </div>
                 </div>
                 <!-- SCRIPTS BELOW! -->
-                <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
                 <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 
                 <script src="./assets/javascript/firebase.js"></script>

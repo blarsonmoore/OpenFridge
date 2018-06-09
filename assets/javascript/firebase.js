@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     var config = {
         apiKey: "AIzaSyDAEf82oHEFPQXLi-L_ESBi8-F-psmb3_o",
         authDomain: "open-fridge-ee2de.firebaseapp.com",
@@ -22,8 +23,28 @@ $(document).ready(function () {
     var connectionsRef = database.ref("/connections");
     var connectedRef = database.ref(".info/connected");
 
-    console.log(connectedRef);
-    console.log(connectionsRef);
+    var user = firebase.auth().currentUser;
+
+    // Check if user is signed in
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+            console.log(firebaseUser);
+
+            $("#signOutBtn").removeClass("d-none");
+            $("#signedIn").addClass("d-none");
+            $("#createNewAccount").addClass("d-none");
+            // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
+
+        }
+        else {
+            console.log("Not Logged In.");
+            $("#signOutBtn").addClass("d-none");
+            $("#signedIn").removeClass("d-none");
+            $("#createNewAccount").removeClass("d-none");
+            $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");;
+        }
+    });
 
     // Sign In 
 
@@ -33,16 +54,17 @@ $(document).ready(function () {
         const password = signInPassword.val().trim();
         const auth = firebase.auth();
 
-        const promise = auth.signInWithEmailAndPassword(email, password);
-
-        $("#signInModal").modal('hide');
-
-
-        console.log(email);
-
+        const promise = auth.signInWithEmailAndPassword(email, password).then(function (userData) {
+            var userData = firebase.auth().currentUser;
+        })
     });
 
-    // New Account 
+    // hide sign-in modal on click
+    $("#signInBtn").on("click", function () {
+        $("#signInModal").modal('hide');
+    });
+
+    // Create New Account 
 
     $("#newAccount").on("click", function () {
         const displayName = createName.val().trim();
@@ -58,6 +80,7 @@ $(document).ready(function () {
         const promise = firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
             // [END createwithemail]
             // callSomeFunction(); Optional
+            console.log(user);
             var user = firebase.auth().currentUser;
             user.updateProfile({
                 displayName: displayName
@@ -67,37 +90,60 @@ $(document).ready(function () {
                 // An error happened.
             });
         });
-
-
-        $("#signOutBtn").on("click", function () {
-            firebase.auth().signOut();
-
-        });
-
-        //Realtime listener
-
-        firebase.auth().onAuthStateChanged(firebaseUser => {
-            if (firebaseUser) {
-                console.log(firebaseUser);
-                $("#signOutBtn").removeClass("d-none");
-                $("#signedIn").addClass("d-none");
-                $("#createNewAccount").addClass("d-none");
-                $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
-
-            }
-            else {
-                console.log("Not Logged In.");
-                $("#signOutBtn").addClass("d-none");
-                $("#signedIn").removeClass("d-none");
-                $("#createNewAccount").removeClass("d-none");
-                $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");;
-            }
-
-        });
     });
+
+    // hide create account modal on click
     $("#newAccount").on("click", function () {
         $("#createAccount").modal('hide');
     });
+
+
+    // Add food elements to firebase
+
+    var foodArray = [];
+
+    $("#addFridgeBtn").on("click", function () {
+        var foodItem = $("#foodList").val().trim();
+        foodArray.push(foodItem);
+        console.log(foodArray);
+
+
+        var user = firebase.auth().currentUser;
+
+        function writeUserData(user, createName, createEmail) {
+            firebase.database().ref('users/' + user).set({
+                username: createName,
+                email: createEmail
+            });
+            console.log(email);
+        }
+    });
+
+    //     }
+    //     firebaseRef.child("/Fridge").set(pantryContent);
+    // });
+
+
+    // writeUserData();
+
+
+
+    // database.ref("/Fridge").push(pantryContent);
+
+    //     var pantryContent = foodArray;
+
+    // });
+
+
+
+    $("#signOutBtn").on("click", function () {
+        firebase.auth().signOut();
+
+    });
+
+
+
 });
+
 
 

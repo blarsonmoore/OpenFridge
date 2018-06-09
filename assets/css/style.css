@@ -40,3 +40,15 @@ table {
     color: white;
     font-size: 20px;
 };
+
+/* $("#addFridgeBtn").on("click", function () {
+    var foodItem = $("#foodList").val().trim();
+    var foodArray = [];
+    console.log(foodArray);
+    foodArray.push(foodItem);
+    var firebaseRef = firebase.database().ref();
+
+    var pantryContent = foodArray;
+
+    firebaseRef.child("/Fridge").set(pantryContent);
+}); */
