@@ -9,6 +9,7 @@ $(document).ready(function () {
         storageBucket: "open-fridge-ee2de.appspot.com",
         messagingSenderId: "445861391268"
     };
+
     firebase.initializeApp(config);
 
     var database = firebase.database();
@@ -30,12 +31,10 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             console.log(firebaseUser);
-
             $("#signOutBtn").removeClass("d-none");
             $("#signedIn").addClass("d-none");
             $("#createNewAccount").addClass("d-none");
             // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
-
         }
         else {
             console.log("Not Logged In.");
@@ -70,18 +69,10 @@ $(document).ready(function () {
         const displayName = createName.val().trim();
         const email = createEmail.val().trim();
         const password = createPassword.val().trim();
-
         const auth = firebase.auth();
 
-        console.log(displayName);
-        console.log(email);
-        console.log(password);
-
         const promise = firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-            // [END createwithemail]
-            // callSomeFunction(); Optional
-            console.log(user);
-            var user = firebase.auth().currentUser;
+            user = firebase.auth().currentUser;
             user.updateProfile({
                 displayName: displayName
             }).then(function () {
@@ -89,6 +80,7 @@ $(document).ready(function () {
             }, function (error) {
                 // An error happened.
             });
+            writeUserData(displayName, displayName, email);
         });
     });
 
@@ -103,45 +95,26 @@ $(document).ready(function () {
     var foodArray = [];
 
     $("#addFridgeBtn").on("click", function () {
+        event.preventDefault();
         var foodItem = $("#foodList").val().trim();
         foodArray.push(foodItem);
         console.log(foodArray);
-
-
-        var user = firebase.auth().currentUser;
-
-        function writeUserData(user, createName, createEmail) {
-            firebase.database().ref('users/' + user).set({
-                username: createName,
-                email: createEmail
-            });
-            console.log(email);
-        }
+        console.log(foodItem);
     });
 
-    //     }
-    //     firebaseRef.child("/Fridge").set(pantryContent);
-    // });
+    var user = firebase.auth().currentUser;
 
-
-    // writeUserData();
-
-
-
-    // database.ref("/Fridge").push(pantryContent);
-
-    //     var pantryContent = foodArray;
-
-    // });
-
-
+    function writeUserData(user, createName, createEmail) {
+        firebase.database().ref('users/' + user).set({
+            username: createName,
+            email: createEmail
+        });
+    }
 
     $("#signOutBtn").on("click", function () {
         firebase.auth().signOut();
 
     });
-
-
 
 });
 
