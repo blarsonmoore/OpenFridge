@@ -1,42 +1,79 @@
 /* FONTS
-font-family: 'Bungee Inline', cursive;
-font-family: 'Racing Sans One', cursive; */
+font-family: 'Anton', sans-serif;
+font-family: 'Pacifico', cursive; */
 
-/* I created this card CSS for cleanup early-on, it may add some complications in the future if overlooked. 
-MARK -remember that this is here */
-#content {
+body{
+    background-image: url("../images/tileable_wood_texture.png");
+    background-repeat: repeat ;
+
+    /* This pattern is downloaded from www.subtlepatterns.com 
+ If you need more, that's where to get'em. */
+ font-family: 'Anton', sans-serif;
+}
+.jumbotron{
+    border-bottom:  solid;
+}
+.nav-link{
+    color:white;
+}
+#display-recipes{
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
-       background-size: cover;
-};
-
+       background-size: 100% ;
+       background-position-y: center;
+       /* tag below for working */
+       min-height: 250px;
+       
+}
+#welcome-card{
+    width: 15em;
+    border: solid;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+ }
+ 
 .card {
-    margin:5px;
-    padding: 5px;
-};
+    font-family: 'Anton', sans-serif;
+       border: solid;
+}
 /* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
 table {
-    overflow-y: hidden;
-};
+    overflow-y: auto;
+}
 
 /* Static CSS */
-.jumbotron {
-    color: rgb(39, 34, 34);
-    font-size: 250%;
-    font-family: 'Bungee Inline', cursive;
-};
+.display-2{
+    color: rgb(79, 200, 244);
+    text-shadow: 5px 2px black;
+    font-family: 'Pacifico', cursive;
+    
+}
 
 #food-input-card {
-    text-align: center
-};
+    text-align: center;
+    padding: 5px;
+}
+th td {
+       text-align: center;
+}
 
 #logo {
-    color: white;
-};
+  
+    color: rgb(79, 200, 244);
+    text-shadow: 3px 2px black;
+    font-family: 'Pacifico', cursive;
+}
+.fridge-img{
+    height: 30emx;
+    width: 18em;
+}
+
 
 #createNewAccount:hover, #signedIn, #signOutBtn {
     cursor: pointer;
-};
+}
+
 #helloUser{
     color: white;
     font-size: 20px;
-};
+}
