@@ -29,17 +29,22 @@ function recipeGainer(itemSearch) {
     })
         .then(function (response) {
             console.log(queryURL);
+            console.log("response message" + response)
             for (i = 0; i < response.hits.length; i++) {
 
 
                 $("#recipe-display").append(
                     '<div class="card  mb-3 displayed-recipes">' +
-                    '<img class="card-img" src=' + (response.hits[i].recipe.image) + '>' +
-                    '<div class="card-img-overlay"><h5>' + (response.hits[i].recipe.label) + '</h5>' +
+                    '<div class="card-header recipe-header"><h5>' +
+                    (response.hits[i].recipe.label) + '</h5>' +
                     '<a href="' + (response.hits[i].recipe.url) + '" target="_blank" class="recipe-link">' +
-                    '<button type="button" class="btn btn-primary btn-lg">See Recipe</button></a>)</div>')
-
-
+                    '<button type="button" class="btn btn-success btn-sm">See Recipe</button></a>' +
+                    '</div>' +
+                    '<img class="card-img" src=' + (response.hits[i].recipe.image) + '>' +
+                    '<div class="card-img-overlay">' +
+                    // left this overlay open for extra content... Maybe a hover effect that shows health features??
+                    '</div>'
+                )
                 console.log(response.hits[i].recipe);
             }
         })
@@ -53,6 +58,9 @@ function addNewItem(item, quantity, unit) {
         + quantity + '</td><td>'
         + unit + '</td><td><button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete"><span aria-hidden="true">&times;</span></button> </td></tr>')
 
+}
+function removeItem() {
+    // on click function that removes row when x is clicked inside the fridge items table
 }
 
 $("#addFridgeBtn").on("click", function () {

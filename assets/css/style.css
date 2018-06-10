@@ -16,6 +16,10 @@ body{
 .nav-link{
     color:white;
 }
+.modal-header .modal-footer {
+    background-color: red;
+ }
+
 #display-recipes{
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
     background-size: 100% ;
@@ -37,6 +41,7 @@ body{
 .card {
     font-family: 'Anton', sans-serif;
        border: solid;
+       
 }
 /* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
 table {
@@ -83,12 +88,13 @@ th td {
     margin-top: 5px;
     margin-left:auto;
     margin-right:auto;
-    max-width:20em;
+    width:40%;
     border:solid;
     border-width: 4px !important;
-        color: white;
+    color: white;
     text-shadow: 4px 4px black;
-    
-
-    
+      
+}
+.recipe-header{
+    background-color: rgb(118, 118, 204) !important;
 }
