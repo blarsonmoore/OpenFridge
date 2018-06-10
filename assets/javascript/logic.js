@@ -10,9 +10,9 @@ $(document).ready(function () {
     $(".recipe-tab").on("click", function () { hideDisplay("#recipe-card") });
 
     $(".shopping-list-tab").on("click", function () { hideDisplay("#shopping-list-card") });
-});
 
-// Creating a variable that holds an array of all of the search items
+    // Creating a variable that holds an array of all of the search items
+
 
 var itemSearch = [""];
 
