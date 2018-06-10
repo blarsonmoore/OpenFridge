@@ -18,12 +18,14 @@ body{
 }
 #display-recipes{
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
-       background-size: 100% ;
-       background-position-y: center;
+    background-size: 100% ;
+    background-position-y: center;
+       
        /* tag below for working */
-       min-height: 250px;
+     min-height: 250px;
        
 }
+
 #welcome-card{
     width: 15em;
     border: solid;
@@ -42,7 +44,7 @@ table {
 }
 
 /* Static CSS */
-.display-2{
+.display-1{
     color: rgb(79, 200, 244);
     text-shadow: 5px 2px black;
     font-family: 'Pacifico', cursive;
@@ -76,4 +78,17 @@ th td {
 #helloUser{
     color: white;
     font-size: 20px;
+}
+.displayed-recipes{
+    margin-top: 5px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:20em;
+    border:solid;
+    border-width: 4px !important;
+        color: white;
+    text-shadow: 4px 4px black;
+    
+
+    
 }
