@@ -19,30 +19,33 @@ body{
 
 
 #display-recipes{
+    background-color:white;
+    font-family: 'Anton', sans-serif;
     background-image: url("../images/brooke-lark-93581-unsplash.jpg");
     background-size: 100% ;
     background-position-y: center;
+    background-repeat: no-repeat;
        
        /* tag below for working */
-     min-height: 250px;
+     min-height: 29em;
      border: solid;
      border-color: #17a2b8;
      border-top: none;
-        
+     
+    
+    
+}
+#display-shopping-list{
+    background-color: white;
+    min-height: 29em;
 }
 
-#welcome-card{
-    width: 15em;
-    border: solid;
-    margin: 0 auto; 
-    float: none; 
-    margin-bottom: 10px; 
- }
+
  
-.card #display-recipes{
+.card{
     font-family: 'Anton', sans-serif;
        border: solid;
-      
+       box-shadow: 10px 10px 5px grey;
        
 }
 /* this table CSS will hopefully allow both shopping list and fridge list to scrolll veritcally, anyone can adjsut as necessary */
@@ -50,6 +53,21 @@ table {
     overflow-y: auto;
 }
 
+#recipe-card{
+    min-height:95%;
+}
+#welcome-card{
+    width: 15em;
+    border: solid;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+    box-shadow: none;
+ }
+#fridge-div{
+    padding:0;
+   
+}
 /* Static CSS */
 .display-1{
     color: rgb(79, 200, 244);
@@ -95,6 +113,7 @@ th td {
 }
 
 .displayed-recipes{
+
     margin-top: 5px;
     margin-left:auto;
     margin-right:auto;
@@ -105,6 +124,7 @@ th td {
     color: white;
     text-shadow: 2px 2px black;
     max-height: 22em;  
+    box-shadow: 3px 3px 3px grey
 }
 .recipe-header{
     background-color: #17a2b8 !important;
