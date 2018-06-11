@@ -20,8 +20,7 @@ var itemSearch = [""];
 function recipeGainer(itemSearch) {
 
     $("#recipe-display").empty();// empties the div
-    var queryURL = "https://api.edamam.com/search?q=" + itemSearch + "&app_id=7b4b7801&app_key=0c479e95104d8a17f3457161abbb98bf&from=0&to=4"
-
+    var queryURL = "https://api.edamam.com/search?q=" + itemSearch + "&app_id=7b4b7801&app_key=0c479e95104d8a17f3457161abbb98bf&from=0&to=6"
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -30,19 +29,26 @@ function recipeGainer(itemSearch) {
         .then(function (response) {
             console.log(queryURL);
             console.log("response message" + response)
+            if (response.hits.length <= 0) {
+                $("#noResults").modal('show');
+            }
             for (i = 0; i < response.hits.length; i++) {
 
 
                 $("#recipe-display").append(
+
                     '<div class="card  mb-3 displayed-recipes">' +
-                    '<div class="card-header recipe-header"><h5>' +
-                    (response.hits[i].recipe.label) + '</h5>' +
-                    '<a href="' + (response.hits[i].recipe.url) + '" target="_blank" class="recipe-link">' +
-                    '<button type="button" class="btn btn-success btn-sm">See Recipe</button></a>' +
-                    '</div>' +
                     '<img class="card-img" src=' + (response.hits[i].recipe.image) + '>' +
                     '<div class="card-img-overlay">' +
-                    // left this overlay open for extra content... Maybe a hover effect that shows health features??
+                    '<div class="card-header text-center recipe-header"><h5>' +
+                    (response.hits[i].recipe.label) + '</h5>' +
+                    '<a href="' + (response.hits[i].recipe.url) + '" target="_blank" class="recipe-link">' +
+
+                    '</div>' +
+
+
+                    '<button type="button" class="btn btn-success btn-sm recipe-btn">See Recipe</button></a>' +
+
                     '</div>'
                 )
                 console.log(response.hits[i].recipe);

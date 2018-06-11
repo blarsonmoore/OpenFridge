@@ -104,6 +104,24 @@
     </div>
     <!-- End Modal For Sign In-->
 
+    <!-- Modal for no Edamam API results -->
+    <div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h3 class="modal-title " id="modalTitle">Sorry!</h3>
+                </div>
+                <div class="modal-body text-center">
+                    <h5>No recipes were found with those ingredients,</h5>
+                    <h5>If you haven't selected any items yet, try selecting ingredients</h5>
+                    <h5> or if your ingredients don't mix, maybe unselect an ingredient or two, and try again!</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end of Edamam modal -->
+
     <!-- End Navbar HTML -->
     <div class="jumbotron text-center" style="background-image: url('assets/images/maarten-van-den-heuvel-400626-unsplash.jpg');
     background-size: cover;">
@@ -130,22 +148,23 @@
                     <!-- THIS INPUT MAY BE REPLACED and overhauled if we get the nutritional API to work here -->
                     <form>
                         <div class="form-row">
+
                             <div class="col">
                                 <!-- JH created an id of foodlist -->
                                 <input type="text" class="form-control" id="foodList" placeholder="Food">
                             </div>
                             <!-- <div class="col"> -->
                             <!-- JH created an id of qty -->
-                            <!-- <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)"> -->
-                            <!-- </div> -->
+                            <!-- <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)">
+                            </div> -->
                         </div>
-                        <div id="unit-buttons">
+                        <!-- <div id="unit-buttons">
                             <input type="radio" name="unit-btn" value="grams"> grams
                             <br>
                             <input type="radio" name="unit-btn" value="ml"> ml
                             <br>
                             <input type="radio" name="unit-btn" value="each"> each
-                        </div>
+                        </div> -->
                         <!-- JH created an ID of submitBtn -->
                         <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                             Tooltip on top
@@ -214,7 +233,7 @@
                 <!-- this card will display recipes  and shopping list-->
                 <div class="card border-primary work-box-card text-center bg-info " id="recipe-card">
 
-                    <div class="card-header">
+                    <div class="card-header workbox-header">
                         <ul class="nav nav-tabs card-header-tabs ">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#display-recipes">Recipes</a>
@@ -237,6 +256,7 @@
                         <br>
                         <p>Select the ingredients from your Open Fridge, to search for recipes </p>
                         <button type="button" id="recipe-search" class="btn btn-success btn-lg btn-block">Click Here to Search For Recipes!</button>
+                        <hr>
                         <div class="row" id="recipe-display">
 
                             <!-- <div class="card border-primary mb-3" class="dispalyed-recipes">
