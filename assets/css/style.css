@@ -83,7 +83,10 @@ th td {
 #helloUser{
     color: white;
     font-size: 20px;
-}
+
+};
+
+
 .displayed-recipes{
     margin-top: 5px;
     margin-left:auto;
