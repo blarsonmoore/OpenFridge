@@ -55,18 +55,18 @@ $(document).ready(function () {
 
     }
 
-    // $("#addFridgeBtn").on("click", function () {
-    //     event.preventDefault();
-    //     console.log("The addFridgeBtn is working")
-    //     var itemSearch = $("#foodList").val();
-    //     var quantitySearch = $("#qtyList").val();
-    //     // empties value
-    //     $("#foodList").val("");
-    //     $("#qtyList").val("");
-    //     // var radios = document.getElementsByName('unit-btn');
-    //     addNewItem(itemSearch, quantitySearch, "NA(6/9)")
-    //     // "NA(6/9)" because unit buttons not working yet
-    // })
+    $("#addFridgeBtn").on("click", function () {
+        event.preventDefault();
+        console.log("The addFridgeBtn is working")
+        var itemSearch = $("#foodList").val();
+        var quantitySearch = $("#qtyList").val();
+        // empties value
+        $("#foodList").val("");
+        $("#qtyList").val("");
+        // var radios = document.getElementsByName('unit-btn');
+        addNewItem(itemSearch, quantitySearch, "NA(6/9)")
+        // "NA(6/9)" because unit buttons not working yet
+    })
 
     $("#recipe-search").on("click", function () {
 
