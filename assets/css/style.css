@@ -139,6 +139,101 @@ th td {
     border-bottom: none !important;
 }
 
+/* FOOTER BELOW */
+.pagebottom {
+    background: #666666;
+
+    color:white;
+
+        text-align: center;
+
+    border: #4aaaa5;
+
+    border-width: 15px;
+    
+
+}
+.bottom-nav{
+    text-align: center;
+}
+.profile-show{
+    margin-left:auto;
+    margin-right: auto;
+   margin-bottom: 15px;
+}
+.profile-name{
+    color:black;
+    font-style: bold;
+    text-align: center;
+}
+.profile-name:hover{
+    color:white;
+}
+.social:hover {
+
+    -webkit-transform: scale(1.1);
+
+    -moz-transform: scale(1.1);
+
+    -o-transform: scale(1.1);
+
+    color:white;
+
+}
+
+.social {
+
+    -webkit-transform: scale(0.8);
+
+    /* Browser Variations: */
+
+    color: #000;
+
+    -moz-transform: scale(0.8);
+
+    -o-transform: scale(0.8);
+
+    -webkit-transition-duration: 0.5s;
+
+    -moz-transition-duration: 0.5s;
+
+    -o-transition-duration: 0.5s;
+
+    margin:auto;
+
+}
+
+.bottom-center{
+
+    color:white;
+
+    font-family: 'Georgia', Times, Times New Roman, serif;
+
+    width:100%;
+
+    border-top-color: #cccccc;
+
+    border-top-width:2px;
+
+    overflow: auto;
+
+    max-width: 960px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    
+
+}
+
+
+
+
+
+
+
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     
