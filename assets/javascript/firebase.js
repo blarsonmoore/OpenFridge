@@ -24,7 +24,11 @@ $(document).ready(function () {
     var connectionsRef = database.ref("/connections");
     var connectedRef = database.ref(".info/connected");
 
+    const fridgeContent = ("wine");
+    var foodArray = [];
+
     var user = firebase.auth().currentUser;
+    console.log(user);
 
     // Check if user is signed in
 
@@ -70,6 +74,7 @@ $(document).ready(function () {
         const email = createEmail.val().trim();
         const password = createPassword.val().trim();
         const auth = firebase.auth();
+        const fridgeContent = $("#foodList");
 
         const promise = firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
             user = firebase.auth().currentUser;
@@ -80,7 +85,7 @@ $(document).ready(function () {
             }, function (error) {
                 // An error happened.
             });
-            writeUserData(displayName, displayName, email);
+            writeUserData(displayName, displayName, email, fridgeContent);
         });
     });
 
@@ -92,30 +97,40 @@ $(document).ready(function () {
 
     // Add food elements to firebase
 
-    var foodArray = [];
+    // function updateUserData(fridgeContent) {
+    //     const items = $("#foodList").val().trim();
+    //     firebase.database().ref('users/' + user).set({
+    //         fridgeContent: items
+    //     });
+    // }
 
+    var items = ("wine")
+
+    function updateUserData(user, fridgeContent) {
+        firebase.database().ref().child('users/' + user).update({
+            fridgeContent: items
+        });
+    }
+
+    // Get a database reference to our blog
     $("#addFridgeBtn").on("click", function () {
-        event.preventDefault();
-        var foodItem = $("#foodList").val().trim();
-        foodArray.push(foodItem);
-        console.log(foodArray);
-        console.log(foodItem);
+        updateUserData();
     });
 
     var user = firebase.auth().currentUser;
 
-    function writeUserData(user, createName, createEmail) {
+    function writeUserData(user, createName, createEmail, fridgeContent) {
         firebase.database().ref('users/' + user).set({
             username: createName,
-            email: createEmail
+            email: createEmail,
+            fridgeContent: fridgeContent
         });
     }
 
     $("#signOutBtn").on("click", function () {
         firebase.auth().signOut();
-
     });
 
-});
 
+});
 
