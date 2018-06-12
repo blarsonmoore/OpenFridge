@@ -24,8 +24,9 @@ $(document).ready(function () {
     var connectionsRef = database.ref("/connections");
     var connectedRef = database.ref(".info/connected");
 
-    const fridgeContent = ("wine");
+    
     var foodArray = [];
+    console.log(foodArray);
 
     var user = firebase.auth().currentUser;
     console.log(user);
@@ -56,10 +57,17 @@ $(document).ready(function () {
         const email = signInEmail.val().trim();
         const password = signInPassword.val().trim();
         const auth = firebase.auth();
-
-        const promise = auth.signInWithEmailAndPassword(email, password).then(function (userData) {
-            var userData = firebase.auth().currentUser;
-        })
+        const promise = auth.signInWithEmailAndPassword(email, password).then(function (user) {
+            const displayName = firebase.auth().currentUser.displayName;
+            var user = firebase.auth().currentUser;
+            user.updateProfile({
+                displayName: displayName
+            }).then(function () {
+                // Update successful.
+            }, function (error) {
+                // An error happened.
+            });
+        });
     });
 
     // hide sign-in modal on click
@@ -74,8 +82,6 @@ $(document).ready(function () {
         const email = createEmail.val().trim();
         const password = createPassword.val().trim();
         const auth = firebase.auth();
-        const fridgeContent = $("#foodList");
-
         const promise = firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
             user = firebase.auth().currentUser;
             user.updateProfile({
@@ -85,7 +91,6 @@ $(document).ready(function () {
             }, function (error) {
                 // An error happened.
             });
-            writeUserData(displayName, displayName, email, fridgeContent);
         });
     });
 
@@ -95,37 +100,36 @@ $(document).ready(function () {
     });
 
 
-    // Add food elements to firebase
+    
+    
+    $("#addFridgeBtn").on("click", function (e) {
+        e.preventDefault();
 
-    // function updateUserData(fridgeContent) {
-    //     const items = $("#foodList").val().trim();
-    //     firebase.database().ref('users/' + user).set({
-    //         fridgeContent: items
-    //     });
-    // }
+        var foodItem = $("#foodList").val().trim();
 
-    var items = ("wine")
-
-    function updateUserData(user, fridgeContent) {
-        firebase.database().ref().child('users/' + user).update({
-            fridgeContent: items
-        });
-    }
-
-    // Get a database reference to our blog
-    $("#addFridgeBtn").on("click", function () {
-        updateUserData();
+        console.log(foodItem);
+      foodArray.push(foodItem);
+        
+        writeUserData();
     });
 
     var user = firebase.auth().currentUser;
 
-    function writeUserData(user, createName, createEmail, fridgeContent) {
-        firebase.database().ref('users/' + user).set({
-            username: createName,
-            email: createEmail,
-            fridgeContent: fridgeContent
+    function writeUserData(username, email, fridgeContent) {
+        const currentUser = firebase.auth().currentUser.uid;
+        const displayName = firebase.auth().currentUser.displayName;
+        const currentEmail = firebase.auth().currentUser.email;
+        console.log(displayName);
+        console.log(currentEmail);
+        console.log(currentUser);
+        const auth = firebase.auth();
+        firebase.database().ref('users/' + currentUser).set({
+            username: displayName,
+            email: currentEmail,
+            fridgeContent: foodArray
         });
     }
+
 
     $("#signOutBtn").on("click", function () {
         firebase.auth().signOut();
