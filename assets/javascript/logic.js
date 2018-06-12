@@ -14,10 +14,10 @@ $(document).ready(function () {
     // Creating a variable that holds an array of all of the search items
 });
 
-var itemSearch = [""];
+    var itemSearch = [""];
 
-// EDAMAM API ajax call 
-function recipeGainer(itemSearch) {
+    // EDAMAM API ajax call 
+    function recipeGainer(itemSearch) {
 
     $("#recipe-display").empty();// empties the div
     var queryURL = "https://api.edamam.com/search?q=" + itemSearch + "&app_id=7b4b7801&app_key=0c479e95104d8a17f3457161abbb98bf&from=0&to=6"
@@ -33,6 +33,17 @@ function recipeGainer(itemSearch) {
                 $("#noResults").modal('show');
             }
             for (i = 0; i < response.hits.length; i++) {
+
+
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+            dataType: 'json'
+        })
+            .then(function (response) {
+                console.log(queryURL);
+                for (i = 0; i < response.hits.length; i++) {
+
 
 
                 $("#recipe-display").append(
@@ -58,41 +69,53 @@ function recipeGainer(itemSearch) {
 ;
 // recipeGainer();
 
-function addNewItem(item, quantity, unit) {
-    $("#fridge-table").append('<tr style="text-align: center; overflow-y: auto"><td><div class="checkbox select-ingredient checkbox-success"><input type="checkbox" class="fridge-checkbox" class="styled" value =' + item + '><label></label></div></td><td>'
-        + item + '</td><td>'
-        + quantity + '</td><td>'
-        + unit + '</td><td><button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete"><span aria-hidden="true">&times;</span></button> </td></tr>')
+
+                    console.log(response.hits[i].recipe);
+                }
+            })
+    }
+    ;
+    // recipeGainer();
+
+
+    function addNewItem(item, quantity, unit) {
+        $("#fridge-table").append('<tr style="text-align: center; overflow-y: auto"><td><div class="checkbox select-ingredient checkbox-success"><input type="checkbox" class="fridge-checkbox" class="styled" value =' + item + '><label></label></div></td><td>'
+            + item + '</td><td>'
+            + quantity + '</td><td>'
+            + unit + '</td><td><button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete"><span aria-hidden="true">&times;</span></button> </td></tr>')
 
 }
 function removeItem() {
     // on click function that removes row when x is clicked inside the fridge items table
 }
 
-$("#addFridgeBtn").on("click", function () {
-    event.preventDefault();
-    console.log("The addFridgeBtn is working")
-    var itemSearch = $("#foodList").val();
-    var quantitySearch = $("#qtyList").val();
-    // empties value
-    $("#foodList").val("");
-    $("#qtyList").val("");
-    // var radios = document.getElementsByName('unit-btn');
-    addNewItem(itemSearch, quantitySearch, "NA(6/9)")
-    // "NA(6/9)" because unit buttons not working yet
 
-})
-$("#recipe-search").on("click", function () {
+    }
 
-    event.preventDefault();
+    // $("#addFridgeBtn").on("click", function () {
+    //     event.preventDefault();
+    //     console.log("The addFridgeBtn is working")
+    //     var itemSearch = $("#foodList").val();
+    //     var quantitySearch = $("#qtyList").val();
+    //     // empties value
+    //     $("#foodList").val("");
+    //     $("#qtyList").val("");
+    //     // var radios = document.getElementsByName('unit-btn');
+    //     addNewItem(itemSearch, quantitySearch, "NA(6/9)")
+    //     // "NA(6/9)" because unit buttons not working yet
+    // })
 
-    var searchIDs = $("#fridge-table input:checkbox:checked").map(function () {
-        return $(this).val();
-    }).get(); // <----
-    console.log(searchIDs);
-    recipeGainer(searchIDs);
+    $("#recipe-search").on("click", function () {
 
-})
+        event.preventDefault();
 
+        var searchIDs = $("#fridge-table input:checkbox:checked").map(function () {
+            return $(this).val();
+        }).get(); // <----
+        console.log(searchIDs);
+        recipeGainer(searchIDs);
 
+    });
+
+});
 
