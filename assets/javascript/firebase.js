@@ -24,7 +24,7 @@ $(document).ready(function () {
     var connectionsRef = database.ref("/connections");
     var connectedRef = database.ref(".info/connected");
 
-    
+
     var foodArray = [];
     console.log(foodArray);
 
@@ -100,16 +100,16 @@ $(document).ready(function () {
     });
 
 
-    
-    
+
+
     $("#addFridgeBtn").on("click", function (e) {
         e.preventDefault();
 
         var foodItem = $("#foodList").val().trim();
 
         console.log(foodItem);
-      foodArray.push(foodItem);
-        
+        foodArray.push(foodItem);
+
         writeUserData();
     });
 
@@ -137,4 +137,19 @@ $(document).ready(function () {
 
 
 });
+function welcomeGuest(guestName) {
+    // function that changes display when guest logs in (creates account / signs in)
+    $("#fridge-img").attr("src", "assets/images/fridge-open");
+    $("#fridge-div").show();
+    $("#greet-user").text(guestName);
 
+
+}
+function goodbyeGuest(guestName) {
+    // function that changes display when guest signs out
+    $("#fridge-img").attr("src", "assets/images/fridge-closed");
+    $("#fridge-div").hide(); $("#greet-user").text("please sign in");
+
+
+
+}
