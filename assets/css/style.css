@@ -31,6 +31,7 @@ body{
      border: solid;
      border-color: #17a2b8;
      border-top: none;
+    
      
     
     
@@ -137,10 +138,13 @@ th td {
 }
 .workbox-header{
     border-bottom: none !important;
+    
 }
 
 /* FOOTER BELOW */
-.pagebottom {
+.pagebottom { 
+    margin-top:20px;
+    padding:10px;
     background: #666666;
 
     color:white;
@@ -226,7 +230,10 @@ th td {
     
 
 }
-
+.resource_credits{
+    font-size: 12px;
+    text-align: left;
+}
 
 
 
