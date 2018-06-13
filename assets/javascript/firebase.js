@@ -69,7 +69,9 @@ $(document).ready(function () {
             });
         });
     });
+    const dbRefObject = firebase.database().ref().child('object')
 
+    dbRefObject.on('value', snap => console.log(snap.val()))
     // hide sign-in modal on click
     $("#signInBtn").on("click", function () {
         $("#signInModal").modal('hide');
@@ -93,29 +95,24 @@ $(document).ready(function () {
             });
         });
     });
-
+    
     // hide create account modal on click
     $("#newAccount").on("click", function () {
         $("#createAccount").modal('hide');
     });
-
-
     
     
     $("#addFridgeBtn").on("click", function (e) {
         e.preventDefault();
-
         var foodItem = $("#foodList").val().trim();
-
         console.log(foodItem);
-      foodArray.push(foodItem);
-        
-        writeUserData();
+      writeUserData();
     });
 
     var user = firebase.auth().currentUser;
 
     function writeUserData(username, email, fridgeContent) {
+        var foodItem = $("#foodList").val().trim();
         const currentUser = firebase.auth().currentUser.uid;
         const displayName = firebase.auth().currentUser.displayName;
         const currentEmail = firebase.auth().currentUser.email;
@@ -126,7 +123,7 @@ $(document).ready(function () {
         firebase.database().ref('users/' + currentUser).set({
             username: displayName,
             email: currentEmail,
-            fridgeContent: foodArray
+            fridgeContent: foodItem
         });
     }
 
@@ -137,4 +134,3 @@ $(document).ready(function () {
 
 
 });
-
