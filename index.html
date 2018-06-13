@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Anton|Pacifico" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -104,6 +106,24 @@
     </div>
     <!-- End Modal For Sign In-->
 
+    <!-- Modal for no Edamam API results -->
+    <div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h3 class="modal-title " id="modalTitle">Sorry!</h3>
+                </div>
+                <div class="modal-body text-center">
+                    <h5>No recipes were found with those ingredients,</h5>
+                    <h5>If you haven't selected any items yet, try selecting ingredients</h5>
+                    <h5> or if your ingredients don't mix, maybe unselect an ingredient or two, and try again!</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end of Edamam modal -->
+
     <!-- End Navbar HTML -->
     <div class="jumbotron text-center" style="background-image: url('assets/images/maarten-van-den-heuvel-400626-unsplash.jpg');
     background-size: cover;">
@@ -130,32 +150,33 @@
                     <!-- THIS INPUT MAY BE REPLACED and overhauled if we get the nutritional API to work here -->
                     <form>
                         <div class="form-row">
+
                             <div class="col">
                                 <!-- JH created an id of foodlist -->
                                 <input type="text" class="form-control" id="foodList" placeholder="Food">
                             </div>
                             <!-- <div class="col"> -->
                             <!-- JH created an id of qty -->
-                            <!-- <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)"> -->
-                            <!-- </div> -->
+                            <!-- <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)">
+                            </div> -->
                         </div>
-                        <div id="unit-buttons">
+                        <!-- <div id="unit-buttons">
                             <input type="radio" name="unit-btn" value="grams"> grams
                             <br>
                             <input type="radio" name="unit-btn" value="ml"> ml
                             <br>
                             <input type="radio" name="unit-btn" value="each"> each
-                        </div>
+                        </div> -->
                         <!-- JH created an ID of submitBtn -->
                         <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                             Tooltip on top
                         </button> -->
-                        <button type="submit" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
+                        <button type="button" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
                     </form>
                 </div>
-                <div class="card border-primary mb-3" id="fridge-div">
+                <div class="card border-primary mb-3">
                     <img id="fridge-img" class="card-img" src="assets/images/fridge-open.jpg" alt="open-fridge">
-                    <div class="card-img-overlay" style="overflow-y:auto;">
+                    <div class="card-img-overlay" id="fridge-div" style="overflow-y:auto;">
                         <table class="table table-striped table-sm" id="fridge-table">
                             <thead class="thead-dark">
                                 <tr>
@@ -165,6 +186,8 @@
                                     <th style="width: 10%" scope="col">units</th>
                                     <th style="width: 10%" scope="col"></th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <tr style="text-align: center; overflow-y: auto">
                                     <td>
                                         <div class="checkbox select-ingredient checkbox-success">
@@ -198,8 +221,7 @@
                                     </td>
                                 </tr>
 
-                            </thead>
-                            <tbody>
+
 
                             </tbody>
                         </table>
@@ -212,9 +234,9 @@
 
 
                 <!-- this card will display recipes  and shopping list-->
-                <div class="card border-primary mb-3 work-box-card text-center bg-info " id="recipe-card">
+                <div class="card border-primary work-box-card text-center bg-info " id="recipe-card">
 
-                    <div class="card-header">
+                    <div class="card-header workbox-header">
                         <ul class="nav nav-tabs card-header-tabs ">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#display-recipes">Recipes</a>
@@ -227,20 +249,20 @@
                     </div>
 
 
-                </div>
 
 
 
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div id="display-recipes" class="container tab-pane active">
-                        <br>
-                        <h5>Recipes</h5>
-                        <p>Select the ingredients from your Open Fridge, and search for recipes </p>
-                        <button type="button" id="recipe-search" class="btn btn-primary btn-lg btn-block">Search For Recipes!</button>
-                        <div class="row" id="recipe-display">
 
-                            <!-- <div class="card border-primary mb-3" class="dispalyed-recipes">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div id="display-recipes" class="container tab-pane active">
+                            <br>
+                            <p>Select the ingredients from your Open Fridge, to search for recipes </p>
+                            <button type="button" id="recipe-search" class="btn btn-success btn-lg btn-block">Click Here to Search For Recipes!</button>
+                            <hr>
+                            <div class="row" id="recipe-display">
+
+                                <!-- <div class="card border-primary mb-3" class="dispalyed-recipes">
                                     <img class="card-img" src='https://www.edamam.com/web-img/262/262b4353ca25074178ead2a07cdf7dc1.jpg'>
                                     <div class="card-img-overlay">
                                         <h5>TEST LABEL</h5>
@@ -251,50 +273,170 @@
                                     </div>
 
                                 </div> -->
+                            </div>
                         </div>
+                        <div id="display-shopping-list" class="container tab-pane fade" style="background-color: white">
+                            <br>
+                            <h5>Shopping List</h5>
+                            <table class="table table-hover" ;>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">List #</th>
+                                        <th scope="col">Ingredient</th>
+                                        <th scope="col">qty needed</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Placeholder one </td>
+                                        <td>.55</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>another item</td>
+                                        <td>55</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
-                    <div id="display-shopping-list" class="container tab-pane fade" style="background-color: white">
-                        <br>
-                        <h5>Shopping List</h5>
-                        <table class="table table-hover" ;>
-                            <thead>
-                                <tr>
-                                    <th scope="col">List #</th>
-                                    <th scope="col">Ingredient</th>
-                                    <th scope="col">qty needed</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Placeholder one </td>
-                                    <td>.55</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>another item</td>
-                                    <td>55</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
-
-
 
                 </div>
-                <!-- SCRIPTS BELOW! -->
-                <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 
-                <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-                    crossorigin="anonymous"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-                    crossorigin="anonymous"></script>
-                <script src="./assets/javascript/logic.js"></script>
-                <script src="./assets/javascript/firebase.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer! -->
+    <div class="container">
+        <footer class="pagebottom">
+
+            <div class="bottom-nav">
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <p>This project was desinged by:</p>
+                    </div>
+                </div>
+                <div class="row">
+
+
+
+                    <div id="blake_moore_div" class=" col-sm-4 profile-show social">
+
+                        <a href="http://blarsonmoore.github.io">
+                            <h3 class="profile-name">Blake Moore</h3>
+                        </a>
+                        <a href="http://blarsonmoore.github.io"></a>
+                        <i class="fa fa-github-square fa-3x social"></i>
+
+                        </a>
+
+                        <a href="https://www.linkedin.com">
+
+                            <i class="fa fa-linkedin-square fa-3x social"></i>
+
+                        </a>
+
+                        <a href="mailto:xx">
+
+                            <i class="fa fa-envelope-square fa-3x social"></i>
+                        </a>
+                    </div>
+
+
+
+                    <div id="jason_heap_div" class="col-sm-4 profile-show social">
+                        <a href="http://jrheap.github.io">
+                            <h3 class="profile-name">Jason Heap</h3>
+                        </a>
+                        <a href="http://jrheap.github.io">
+
+                            <i class="fa fa-github-square fa-3x social"></i>
+
+                        </a>
+
+                        <a href="https://www.linkedin.com/">
+
+                            <i class="fa fa-linkedin-square fa-3x social"></i>
+
+                        </a>
+
+                        <a href="mailto:xx">
+
+                            <i class="fa fa-envelope-square fa-3x social"></i>
+                        </a>
+                    </div>
+
+                    <div id="mark_polichette_div" class="col-sm-4 profile-show social">
+                        <a href="http://mcpolichette.github.io">
+                            <h3 class="profile-name">Mark Polichette</h3>
+                        </a>
+                        <a href="http://github.com/mcpolichette">
+
+                            <i class="fa fa-github-square fa-3x social"></i>
+
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/mark-polichette/">
+
+                            <i class="fa fa-linkedin-square fa-3x social"></i>
+
+                        </a>
+
+                        <a href="mailto:Mark@Polichette.com">
+
+                            <i class="fa fa-envelope-square fa-3x social"></i>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row resource_credits">
+
+                    <div class="col-sm-6">
+                        <p>Sites and Resources used to build this site:</p>
+                        <ul class="profile-show">
+                            <li>Bootstrap</li>
+                            <li>Jquery</li>
+                            <li>Font-Awesome</li>
+                            <li>Edamam </li>
+                            <li>Firebase </li>
+                            <li>Other API</li>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <ul>
+                            <li>Jumbotron background: Photo by Maarten Van Den Heuvel on Unsplash</li>
+                            <li>Recipe background: Photo by Brooke Lark on Unsplash</li>
+                            <li>Refridgerator images: Photo provided by Shutterstock</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <p class="profile-name">copyright 2018</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+    </footer>
+
+    <!-- SCRIPTS BELOW! -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="./assets/javascript/logic.js"></script>
+    <script src="./assets/javascript/firebase.js"></script>
 
 </body>
 
