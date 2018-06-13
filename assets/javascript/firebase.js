@@ -89,6 +89,7 @@ $(document).ready(function () {
             }).then(function () {
                 // Update successful.
             }, function (error) {
+                console.log("ERROR" + error.message)
                 // An error happened.
             });
         });
