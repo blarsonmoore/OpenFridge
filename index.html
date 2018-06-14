@@ -195,9 +195,10 @@
                             <input type="radio" name="unit-btn" value="each"> each
                         </div> -->
                         <!-- JH created an ID of submitBtn -->
-
-
-                        <button type="submit" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
+                        <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                            Tooltip on top
+                        </button> -->
+                        <button type="button" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
                     </form>
                 </div>
                 <div class="card border-primary mb-3">
@@ -208,8 +209,8 @@
                                 <tr>
                                     <th style="width: 15%" scope="col"> Select</th>
                                     <th style="width: 40%; text-align: center" scope=" col ">Food</th>
-                                    <th style="width: 15%; text-align: left" scope="col">Quantity</th>
-                                    <th style="width: 10%" scope="col">units</th>
+                                    <th style="width: 15%; text-align: left" scope="col"></th>
+                                    <th style="width: 10%" scope="col"></th>
                                     <th style="width: 10%" scope="col"></th>
                                 </tr>
                             </thead>
@@ -222,35 +223,18 @@
                                         </div>
                                     </td>
                                     <td>Chicken</td>
-                                    <td>2</td>
-                                    <td>kg</td>
+
                                     <td>
                                         <button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </td>
                                 </tr>
-                                <tr style="text-align: center">
-                                    <td>
-                                        <div class="checkbox select-ingredient checkbox-success">
-                                            <input type="checkbox" id="checkbox1" class="styled" value="eggs">
-                                            <label></label>
-                                        </div>
-                                    </td>
-                                    <td>eggs</td>
-                                    <td>4</td>
-                                    <td>each</td>
-                                    <td>
-                                        <button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </td>
-                                </tr>
-
-
-
                             </tbody>
                         </table>
+
+                        <div id="list"></div>
+
                     </div>
                 </div>
             </div>

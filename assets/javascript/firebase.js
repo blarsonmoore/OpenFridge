@@ -1,5 +1,5 @@
-$(document).ready(function () {
 
+$(document).ready(function () {
 
     var config = {
         apiKey: "AIzaSyDAEf82oHEFPQXLi-L_ESBi8-F-psmb3_o",
@@ -11,6 +11,8 @@ $(document).ready(function () {
     };
 
     firebase.initializeApp(config);
+    console.log(firebase);
+
 
     var database = firebase.database();
 
@@ -25,20 +27,49 @@ $(document).ready(function () {
     var connectedRef = database.ref(".info/connected");
 
 
-    var foodArray = [];
-    console.log(foodArray);
 
-    var user = firebase.auth().currentUser;
-    console.log(user);
 
     // Check if user is signed in
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-            console.log(firebaseUser);
+
             $("#signOutBtn").removeClass("d-none");
             $("#signedIn").addClass("d-none");
             $("#createNewAccount").addClass("d-none");
+            var user = firebase.auth().currentUser.uid;
+            console.log(user);
+            const preObject = document.getElementById('object');
+            const ulList = document.getElementById('list');
+
+            const dbRefObject = firebase.database().ref().child('users');
+            console.log(dbRefObject);
+            const dbRefList = dbRefObject.child(user);
+            const dbRefItem = dbRefList.child('item');
+            console.log(dbRefItem);
+            console.log(dbRefList);
+
+            // dbRefObject.on('value', snap => {
+            //     preObject.innerText = JSON.stringify(snap.val(), null, 3);
+            //     console.log(snap.val());
+            // });
+
+            dbRefList.on('child_added', snap => {
+                var key = snap.key;
+                console.log(key);
+                const button = document.createElement('button');
+                button.innerText = snap.val().item;
+                button.id = snap.val().item;
+                button.className = "itembutton";
+                ulList.appendChild(button);
+            });
+
+            $(function () {
+                $(".itembutton").on("click", function () {
+                    $(".itembutton").addClass("itemSelected");
+                });
+            });
+            // const liChanged = document.getElementById(snap.key);
             // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
         }
         else {
@@ -46,9 +77,12 @@ $(document).ready(function () {
             $("#signOutBtn").addClass("d-none");
             $("#signedIn").removeClass("d-none");
             $("#createNewAccount").removeClass("d-none");
-            $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");;
+            $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");
+
         }
     });
+
+
 
     // Sign In 
 
@@ -92,7 +126,9 @@ $(document).ready(function () {
                 console.log("ERROR" + error.message)
                 // An error happened.
             });
+            // setTimeout(writeUserData, 1000)
         });
+
     });
 
     // hide create account modal on click
@@ -101,23 +137,20 @@ $(document).ready(function () {
     });
 
 
-
-
     $("#addFridgeBtn").on("click", function (e) {
         e.preventDefault();
-
-        var foodItem = $("#foodList").val().trim();
-
-        console.log(foodItem);
-        foodArray.push(foodItem);
-
-        writeUserData();
+        window.foodItem = $("#foodList").val().trim();
+        console.log(window.foodItem);
+        updateUserData();
+        $("#foodList").val("");
     });
+
 
     var user = firebase.auth().currentUser;
 
-    function writeUserData(username, email, fridgeContent) {
+    function writeUserData(username, email) {
         const currentUser = firebase.auth().currentUser.uid;
+        console.log(currentUser);
         const displayName = firebase.auth().currentUser.displayName;
         const currentEmail = firebase.auth().currentUser.email;
         console.log(displayName);
@@ -127,30 +160,49 @@ $(document).ready(function () {
         firebase.database().ref('users/' + currentUser).set({
             username: displayName,
             email: currentEmail,
-            fridgeContent: foodArray
+
         });
     }
+
+    // function updateUserData() {
+    //     var rootRef = firebase.database().ref();
+    //     var storeRef rootRef.child()
+    //     firebase.database().ref(currentUser).child('fridgeContent').push({
+    //         item: window.foodItem
+    //     });
+    //     console.log(foodItem);
+    // }
+
+    function updateUserData(fridgeContent) {
+        const currentUser = firebase.auth().currentUser.uid;
+        firebase.database().ref('users/' + currentUser).push({
+            item: window.foodItem
+        });
+        console.log(foodItem);
+    }
+
+    // dbRefItem.on('child_added', snap => consloe.log(snap.val()));
+
+    // function updateUserData(fridgeContent) {
+    //     const currentUser = firebase.auth().currentUser.uid;
+    //     const displayName = firebase.auth().currentUser.displayName;
+    //     const currentEmail = firebase.auth().currentUser.email;
+    //     var foodItem = "cheese";
+    //     console.log(displayName);
+    //     console.log(currentEmail);
+    //     console.log(currentUser);
+    //     const auth = firebase.auth();
+    //     firebase.database().ref(currentUser).child('fridgeContent').push({
+    //         item: foodItem
+
+    //     });
+    //     console.log(foodItem);
+    // }
 
 
     $("#signOutBtn").on("click", function () {
         firebase.auth().signOut();
+        location.reload();
     });
 
-
 });
-function welcomeGuest(guestName) {
-    // function that changes display when guest logs in (creates account / signs in)
-    $("#fridge-img").attr("src", "assets/images/fridge-open");
-    $("#fridge-div").show();
-    $("#greet-user").text(guestName);
-
-
-}
-function goodbyeGuest(guestName) {
-    // function that changes display when guest signs out
-    $("#fridge-img").attr("src", "assets/images/fridge-closed");
-    $("#fridge-div").hide(); $("#greet-user").text("please sign in");
-
-
-
-}

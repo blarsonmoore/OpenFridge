@@ -267,6 +267,32 @@ button {
 
 
 
+.itembutton {
+    background-color: transparent;
+    border: none;
+    color:black;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    margin:3px;
+}
+
+.itemSelected {
+    background-color: transparent;
+    border: none;
+    color:green;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    margin:3px;
+
+}
 
 
 
