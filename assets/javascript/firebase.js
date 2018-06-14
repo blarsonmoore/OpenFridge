@@ -41,9 +41,9 @@ $(document).ready(function () {
             const preObject = document.getElementById('object');
             const ulList = document.getElementById('list');
 
-            const dbRefObject = firebase.database().ref('users/' + user);
+            const dbRefObject = firebase.database().ref().child('users');
             console.log(dbRefObject);
-            const dbRefList = dbRefObject.child('item');
+            const dbRefList = dbRefObject.child(user);
             console.log(dbRefList);
 
             dbRefObject.on('value', snap => {
