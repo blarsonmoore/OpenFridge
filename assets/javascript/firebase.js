@@ -26,7 +26,7 @@ $(document).ready(function () {
     var connectionsRef = database.ref("/connections");
     var connectedRef = database.ref(".info/connected");
 
-
+    
 
 
     // Check if user is signed in
@@ -38,27 +38,37 @@ $(document).ready(function () {
             $("#signedIn").addClass("d-none");
             $("#createNewAccount").addClass("d-none");
             var user = firebase.auth().currentUser.uid;
+            console.log(user);
             const preObject = document.getElementById('object');
             const ulList = document.getElementById('list');
 
-            const dbRefObject = firebase.database().ref('users/' + user);
+            const dbRefObject = firebase.database().ref().child('users');
             console.log(dbRefObject);
-            const dbRefList = dbRefObject.child('item');
+            const dbRefList = dbRefObject.child(user);
+            const dbRefItem = dbRefList.child('item');
+            console.log(dbRefItem);
             console.log(dbRefList);
 
-            dbRefObject.on('value', snap => {
-                preObject.innerText = JSON.stringify(snap.val(), null, 3);
-            });
+            // dbRefObject.on('value', snap => {
+            //     preObject.innerText = JSON.stringify(snap.val(), null, 3);
+            //     console.log(snap.val());
+            // });
 
             dbRefList.on('child_added', snap => {
                 var key = snap.key;
                 console.log(key);
                 const button = document.createElement('button');
-                button.innerText = snap.val();
-                button.id = snap.val();
+                button.innerText = snap.val().item;
+                button.id = snap.val().item;
+                button.className = "itembutton";
                 ulList.appendChild(button);
             });
 
+            $(function() {                       
+                $(".itembutton").on("click", function() {  
+                  $(".itembutton").addClass("itemSelected");     
+                });
+              });
             // const liChanged = document.getElementById(snap.key);
             // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
         }
@@ -67,9 +77,12 @@ $(document).ready(function () {
             $("#signOutBtn").addClass("d-none");
             $("#signedIn").removeClass("d-none");
             $("#createNewAccount").removeClass("d-none");
-            $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");;
+            $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");
+            
         }
     });
+    
+    
 
     // Sign In 
 
@@ -119,7 +132,7 @@ $(document).ready(function () {
 
     // hide create account modal on click
     $("#newAccount").on("click", function () {
-        $("#signInModal").modal('hide');
+        $("#createAccount").modal('hide');
     });
 
 
@@ -188,6 +201,7 @@ $(document).ready(function () {
 
     $("#signOutBtn").on("click", function () {
         firebase.auth().signOut();
+        location.reload();
     });
 
 });
