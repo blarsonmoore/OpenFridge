@@ -160,6 +160,13 @@ th td {
     background-repeat: no-repeat;
     /* text-shadow: 0 0 3px #17a2b8 !important; */
 }
+
+/* some real basic clean up on buttons and forms */
+input{
+    border:solid !important;
+    border-color: black !important;
+    border-width: 1px !important;
+}
 button {
     letter-spacing: 1.3px;
 }
