@@ -55,7 +55,7 @@ table {
 }
 
 #recipe-card{
-    min-height:95%;
+    min-height:97%;
 }
 #welcome-card{
     width: 15em;
@@ -85,9 +85,9 @@ th td {
        text-align: center;
 }
 
-#logo {
+.logo {
   
-    color: rgb(79, 200, 244);
+    color: rgb(79, 200, 244)!important;
     text-shadow: 3px 2px black;
     font-family: 'Pacifico', cursive;
 }
@@ -139,6 +139,36 @@ th td {
 .workbox-header{
     border-bottom: none !important;
     
+}
+.modal-content{
+    font-family: 'Anton', sans-serif;
+    
+    border:solid !important;
+    border-radius: 15px 15px 0px 0px !important;
+    
+}
+.modal-header{
+    background-color: #555d64 !important;
+}
+.modal-footer{
+    background-color: #555d64 !important;
+}
+.modal-body{
+    background-image: url("../images/tileable_wood_texture.png") !important;
+    background-size: 100% ;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    /* text-shadow: 0 0 3px #17a2b8 !important; */
+}
+
+/* some real basic clean up on buttons and forms */
+input{
+    border:solid !important;
+    border-color: black !important;
+    border-width: 1px !important;
+}
+button {
+    letter-spacing: 1.3px;
 }
 
 /* FOOTER BELOW */
@@ -300,3 +330,4 @@ th td {
     } 
 
 } 
+/* MP - letterspacing for cards (optional):   letter-spacing: 2px; */
