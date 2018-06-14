@@ -12,10 +12,42 @@ $(document).ready(function () {
 
     firebase.initializeApp(config);
 
-    const preObject = document.getElementById('object');
+    var database = firebase.database();
+    var user = firebase.auth().currentUser;
+    var initialInput;
+    var fridgeContent;
+    var item;
+    var sku = window.foodItem;
 
-    const dbRefObject = firebase.database().ref().child('object')
 
-    dbRefObject.on('value', snap => console.log(snap.val()))
+    initialInput = createInput(user);
+
+    function submitData() {
+        var data = {
+            user: {
+                fridgeContent: {
+                    item: sku
+                }
+            }
+        }
+        console.log(data);
+        var ref = database.ref('users')
+        ref.push(data)
+    }
+
+    var ref = database.ref('users');
+    ref.on('value', gotData, errData);
+
+    function gotData(data) {
+        // var items = data.val();
+        // var keys = Object.keys('users');
+        console.log(data);
+    }
+
+    function errData(err) {
+        console.log('Error!');
+        console.log(err);
+    }
+
 
 });
