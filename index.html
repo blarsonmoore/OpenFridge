@@ -23,7 +23,7 @@
 <body>
     <!-- Navbar HTML -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a id="logo" class="navbar-brand">Open Fridge</a>
+        <a class="navbar-brand logo">Open Fridge</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,20 +49,19 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Create New Account</h5>
+                    <h3 class="logo">Open Fridge</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
+                        <h5 class="modal-title" id="modalTitle">Create New Account</h5>
                         <div class="form-group">
                             <label for="userName">Name</label>
                             <input type="username" class="form-control" id="newAccName" aria-describedby="Username" placeholder="Name">
                             <label for="email1">Email address</label>
                             <input type="email" class="form-control" id="newAccEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control" id="newAccPassword" placeholder="Password">
                         </div>
@@ -81,7 +80,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Sign In</h5>
+                    <h3 class="logo">Open Fridge</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -89,6 +88,7 @@
                 <div class="modal-body">
                     <form id="sighInForm">
                         <div class="form-group">
+                            <h5 class="modal-title" id="modalTitle">Sign In</h5>
                             <label for="userName">Email</label>
                             <input type="username" class="form-control" id="signInEmail" aria-describedby="Username" placeholder="Name">
                         </div>
@@ -106,23 +106,50 @@
     </div>
     <!-- End Modal For Sign In-->
 
-    <!-- Modal for no Edamam API results -->
-    <div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+    <!-- Modal for no ingredient on submit click -->
+    <div class="modal fade" id="noIngredients" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h3 class="modal-title " id="modalTitle">Sorry!</h3>
+                    <h3 class="logo">Open Fridge</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body text-center">
-                    <h5>No recipes were found with those ingredients,</h5>
-                    <h5>If you haven't selected any items yet, try selecting ingredients</h5>
-                    <h5> or if your ingredients don't mix, maybe unselect an ingredient or two, and try again!</h5>
+                    <h3 class="modal-title " id="modalTitle">Sorry!</h3>
+                    <h3>No ingredients were selected.</h3>
+                    <hr>
+                    <h5>We can't search for recipes without ingredients.</h5>
+                    <h5>Please select ingredients from the refridgerator, </h5>
+                    <h5>and reclick the search button.</h5>
                 </div>
 
             </div>
         </div>
     </div>
-    <!-- end of Edamam modal -->
+    <!-- Modal for too many / incompatable ingredients (ie: msutard and ice-cream) -->
+    <div class="modal fade" id="badIngredients" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h3 class="logo">Open Fridge</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h3 class="modal-title " id="modalTitle">Sorry!</h3>
+                    <h3>No recipes were found with those ingredients,</h3>
+                    <hr>
+                    <h5>Unfortunately, we were unable to find a recipe with these ingredients. </h5>
+                    <h5>Try unselecting one or more and retrying.</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end of Edamam modals -->
 
     <!-- End Navbar HTML -->
     <div class="jumbotron text-center" style="background-image: url('assets/images/maarten-van-den-heuvel-400626-unsplash.jpg');
@@ -171,7 +198,7 @@
                         <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                             Tooltip on top
                         </button> -->
-                        <button type="submit" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
+                        <button type="button" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
                     </form>
                 </div>
                 <div class="card border-primary mb-3">
@@ -182,8 +209,8 @@
                                 <tr>
                                     <th style="width: 15%" scope="col"> Select</th>
                                     <th style="width: 40%; text-align: center" scope=" col ">Food</th>
-                                    <th style="width: 15%; text-align: left" scope="col">Quantity</th>
-                                    <th style="width: 10%" scope="col">units</th>
+                                    <th style="width: 15%; text-align: left" scope="col"></th>
+                                    <th style="width: 10%" scope="col"></th>
                                     <th style="width: 10%" scope="col"></th>
                                 </tr>
                             </thead>
@@ -196,35 +223,18 @@
                                         </div>
                                     </td>
                                     <td>Chicken</td>
-                                    <td>2</td>
-                                    <td>kg</td>
+
                                     <td>
                                         <button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </td>
                                 </tr>
-                                <tr style="text-align: center">
-                                    <td>
-                                        <div class="checkbox select-ingredient checkbox-success">
-                                            <input type="checkbox" id="checkbox1" class="styled" value="eggs">
-                                            <label></label>
-                                        </div>
-                                    </td>
-                                    <td>eggs</td>
-                                    <td>4</td>
-                                    <td>each</td>
-                                    <td>
-                                        <button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </td>
-                                </tr>
-
-
-
                             </tbody>
                         </table>
+
+                        <div id="list"></div>
+
                     </div>
                 </div>
             </div>
@@ -244,6 +254,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#display-shopping-list">Shopping List</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#display-favorites">Favorites</a>
+                            </li>
 
                         </ul>
                     </div>
@@ -262,17 +275,7 @@
                             <hr>
                             <div class="row" id="recipe-display">
 
-                                <!-- <div class="card border-primary mb-3" class="dispalyed-recipes">
-                                    <img class="card-img" src='https://www.edamam.com/web-img/262/262b4353ca25074178ead2a07cdf7dc1.jpg'>
-                                    <div class="card-img-overlay">
-                                        <h5>TEST LABEL</h5>
 
-                                        <a href="https://www.davidlebovitz.com/chicken-teriyaki-recipe-japanese-farm-food/" target="_blank" class="recipe-link">
-                                            <button type="button" class="btn btn-primary btn-lg">See Recipe</button>
-                                        </a>
-                                    </div>
-
-                                </div> -->
                             </div>
                         </div>
                         <div id="display-shopping-list" class="container tab-pane fade" style="background-color: white">
@@ -299,6 +302,16 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div id="display-favorites" class="container tab-pane">
+                            <br>
+                            <p>These are your saved recipes </p>
+                            <button type="button" id="fav-display" class="btn btn-success btn-lg btn-block">Click Here to See Favoites!</button>
+                            <hr>
+                            <div class="row" id="favorites-display">
+
+
+                            </div>
                         </div>
 
                     </div>
@@ -408,8 +421,9 @@
 
                     <div class="col-sm-6">
                         <ul>
-                            <li>Jumbotron background: Photo by Maarten Van Den Heuvel on Unsplash</li>
-                            <li>Recipe background: Photo by Brooke Lark on Unsplash</li>
+                            <li>Jumbotron background image: Photo by Maarten Van Den Heuvel on Unsplash</li>
+                            <li>Recipe background image: Photo by Brooke Lark on Unsplash</li>
+                            <li>Modal Background image: Photo by Brooke Lark on Unsplash</li>
                             <li>Refridgerator images: Photo provided by Shutterstock</li>
                         </ul>
 
