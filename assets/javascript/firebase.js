@@ -24,11 +24,23 @@ const signInPassword = $("#signInPassword");
 var connectionsRef = database.ref("/connections");
 var connectedRef = database.ref(".info/connected");
 
-
-
-
-
 var user = firebase.auth().currentUser;
+
+var itemRef = database.ref('users');
+itemRef.on('value', gotData, errData);
+
+function gotData (data) {
+    // var items = data.val();
+    // var keys = Object.keys('users');
+    console.log(data);
+}
+
+// https://www.youtube.com/watch?v=NcewaPfFR6Y
+
+function errData (err) {
+    console.log('Error!');
+    console.log(err);
+}
 
 
 // Check if user is signed in
@@ -36,15 +48,29 @@ var user = firebase.auth().currentUser;
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
+
         $("#signOutBtn").removeClass("d-none");
         $("#signedIn").addClass("d-none");
         $("#createNewAccount").addClass("d-none");
-        const currentUser = firebase.auth().currentUser.uid;
-        const dbRefObject = firebase.database().ref().child(currentUser);
-        const dbRefItem = dbRefObject.child('item');
-        console.log(dbRefObject);
-        console.log(dbRefItem);
-        dbRefItem.on('child_added', snap => consloe.log(snap.val()));
+        // var keys = Object.keys(firebaseUser);
+        // console.log(keys);
+        // const preObject = document.getElementById('object');
+        // const ulList = document.getElementById('list');
+        // const currentUser = firebaseUser.uid;
+        // const dbRefObject = firebase.database().ref().child('item');
+        // console.log(dbRefObject);
+        // const dbRefItem = dbRefObject.child('item');
+        // console.log(dbRefItem);
+        
+        // dbRefItem.on('value', snap => {
+        //     preObject.innerText = JSON.stringify(snap.val(), null, 3);
+        // });
+        // dbRefItem.on('child_added', snap => {
+        //     const li = document.createElement('li');
+        //     li.innerText = snap.child();
+        //     li.id = snap.key;
+        //     ulList.appendChild(li);
+        // });
         // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
     }
     else {
@@ -135,14 +161,22 @@ function writeUserData(username, email) {
     });
 }
 
+// function updateUserData() {
+//     var rootRef = firebase.database().ref();
+//     var storeRef rootRef.child()
+//     firebase.database().ref(currentUser).child('fridgeContent').push({
+//         item: window.foodItem
+//     });
+//     console.log(foodItem);
+// }
+
 function updateUserData(fridgeContent) {
     const currentUser = firebase.auth().currentUser.uid;
-    firebase.database().ref(currentUser).child('fridgeContent').push({
+    firebase.database().ref('users/' + currentUser).push({
         item: window.foodItem
     });
     console.log(foodItem);
 }
-
 
 // dbRefItem.on('child_added', snap => consloe.log(snap.val()));
 
