@@ -49,26 +49,21 @@ $(document).ready(function () {
             console.log(dbRefItem);
             console.log(dbRefList);
 
-            // dbRefObject.on('value', snap => {
-            //     preObject.innerText = JSON.stringify(snap.val(), null, 3);
-            //     console.log(snap.val());
-            // });
-
+            
             dbRefList.on('child_added', snap => {
                 var key = snap.key;
                 console.log(key);
                 const button = document.createElement('button');
                 button.innerText = snap.val().item;
-                button.id = snap.val().item;
-                button.className = "itembutton";
+                button.value = snap.val().item;
+                button.className = "buttonClass";
+                button.id = "newClass";
+                button.type = "button";
+               
                 ulList.appendChild(button);
             });
-
-            $(function () {
-                $(".itembutton").on("click", function () {
-                    $(".itembutton").addClass("itemSelected");
-                });
-            });
+            
+            
             // const liChanged = document.getElementById(snap.key);
             // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
         }
@@ -78,11 +73,20 @@ $(document).ready(function () {
             $("#signedIn").removeClass("d-none");
             $("#createNewAccount").removeClass("d-none");
             $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");
-
+            
         }
     });
+    
 
-
+    // $(document).on("click", "#newClass", function (e){
+    //     console.log(e.target)
+    //     var value = $("#newClass").val();
+    //     console.log(value);
+        // var element = $("#newClass");
+        // element.removeClass("buttonClass");
+        // element.addClass("itemSelected");
+        
+    // });
 
     // Sign In 
 
