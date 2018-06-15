@@ -39,7 +39,7 @@ $(document).ready(function () {
             $("#createNewAccount").addClass("d-none");
             var user = firebase.auth().currentUser.uid;
             console.log(user);
-            const preObject = document.getElementById('object');
+
             const ulList = document.getElementById('list');
 
             const dbRefObject = firebase.database().ref().child('users');
@@ -64,13 +64,10 @@ $(document).ready(function () {
                 ulList.appendChild(button);
             });
 
-            $(function () {
-                $(".itembutton").on("click", function () {
-                    $(".itembutton").addClass("itemSelected");
-                });
+            $(".itembutton").on("click", function () {
+                $(".itembutton").addClass("itemSelected");
             });
-            // const liChanged = document.getElementById(snap.key);
-            // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
+
         }
         else {
             console.log("Not Logged In.");

@@ -268,7 +268,7 @@ button {
 
 
 .itembutton {
-    background-color: transparent;
+    /* background-color:; */
     border: none;
     color:black;
     padding: 7px 15px;
