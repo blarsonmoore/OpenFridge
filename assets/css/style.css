@@ -267,8 +267,8 @@ button {
 
 
 
-.itembutton {
-    background-color: transparent;
+ .buttonClass {
+    background-color: blue;
     border: none;
     color:black;
     padding: 7px 15px;
@@ -277,10 +277,10 @@ button {
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
-    margin:3px;
-}
+    margin:3px; 
+} 
 
-.itemSelected {
+.buttonSelected {
     background-color: transparent;
     border: none;
     color:green;
@@ -291,7 +291,6 @@ button {
     font-size: 12px;
     cursor: pointer;
     margin:3px;
-    /* */
 
 }
 
