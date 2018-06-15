@@ -7,9 +7,13 @@ $(document).ready(function () {
         $(".work-box-card").hide()
         $(tab).show();
     }
+
     $(".recipe-tab").on("click", function () { hideDisplay("#recipe-card") });
 
     $(".shopping-list-tab").on("click", function () { hideDisplay("#shopping-list-card") });
+
+    
+    
 
     // Creating a variable that holds an array of all of the search items
 
@@ -94,25 +98,40 @@ $(document).ready(function () {
         // on click function that removes row when x is clicked inside the fridge items table
     }
 
+    var itemArray = [];
+
+    // $(document).on('click', '.buttonClass, .buttonSelected', function (e) {
+    //     $(this).toggleClass('buttonClass buttonSelected');
+    //     var value = $(this).val();
+    //     console.log(value);
+    //     itemArray.push(value);
+    //     console.log(itemArray);
+    // });
 
 
-
-
+    // Newly added Javascript for fridge content buttons
+    $(document).on('click', '.buttonClass', function () {
+        $(this).removeClass('buttonClass').addClass('buttonSelected');
+        var value = $(this).val();
+        console.log(value);
+        itemArray.push(value);
+        console.log(itemArray);
+    });
+    
+    $(document).on('click', '.buttonSelected', function () {
+        $(this).removeClass('buttonSelected').addClass('buttonClass');
+        var rmValue = $(this).val();
+        console.log(rmValue);
+        var idx = itemArray.indexOf(rmValue);
+        console.log(idx);
+        console.log(itemArray);
+        if (idx != -1) itemArray.splice(idx, 1);
+        console.log(itemArray);
+    });
 
     $("#recipe-search").on("click", function (e) {
-
         e.preventDefault();
-
-        var searchIDs = $("#fridge-table input:checkbox:checked").map(function () {
-            return $(this).val();
-        }).get(); // <----
-        console.log("search ID " + searchIDs);
-        if ((!Array.isArray(searchIDs) || !searchIDs.length)) {
-            $("#noIngredients").modal('show');
-        } else {
-
-            recipeGainer(searchIDs);
-        }
+            recipeGainer(itemArray);
     });
 });
 
