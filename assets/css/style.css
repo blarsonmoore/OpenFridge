@@ -27,18 +27,18 @@ body{
     background-repeat: no-repeat;
        
        /* tag below for working */
-     min-height: 29em;
+     min-height: 38em;
      border: solid;
      border-color: #17a2b8;
      border-top: none;
     
-     
+
     
     
 }
 #display-shopping-list{
     background-color: white;
-    min-height: 29em;
+    min-height: 38em;
 }
 
 
@@ -285,7 +285,7 @@ button {
     bottom:0;
 }
 
- .buttonClass {
+ /* .buttonClass {
     background-color: blue;
     border: none;
     color:black;
@@ -310,7 +310,7 @@ button {
     margin:3px;
 
   
-} 
+}  */
 #list{
     padding-top: 20%;
     padding-left: 15%;
@@ -321,6 +321,7 @@ button {
 
 .tt-query, 
 .tt-hint {
+
     display: block;
     font-family: 'Anton', sans-serif;
 	width: 100%;
@@ -337,6 +338,7 @@ button {
 	      box-shadow: inset 0 1px 1px green(0, 0, 0, 0.075);
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
     
    
     
@@ -376,6 +378,7 @@ button {
     font-weight: bold;
     color: #17a2b8;
   }
+
 
 .tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
   color: blue; 
