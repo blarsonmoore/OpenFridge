@@ -317,55 +317,73 @@ button {
     padding-right: 15%;
 }
 
-
+/* Is this the start of the AUTO correct  */
 
 .tt-query, 
 .tt-hint {
-    width: 100%;
-    padding: 8px 12px;
-    font-size: 24px;
-    line-height: 30px;
-    border: 2px solid #ccc;
-    /* border-radius: 8px; */
-    outline: none;
+    display: block;
+    font-family: 'Anton', sans-serif;
+	width: 100%;
+	height: 38px;
+	padding: 8px 12px;
+	font-size: 20px;
+	line-height: 1.428571429;
+	color: orange;
+	vertical-align: middle;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(240, 13, 13, 0.075);
+	      box-shadow: inset 0 1px 1px green(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    
    
     
 }
-
+#the-basics{
+    color: orange;
+}
 .tt-query {
 }
 
 .tt-hint {
-    color: #999;
+    color: orange;
 }
 
 .tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
     width: 100%;
-    margin-top: 12px;
-    padding: 8px 0;
-    background-color: #fff;
-    /* border: 1px solid #ccc; */
-    /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    margin-top: 2px;
+	padding: 5px 0;
+	background-color: #ffffff;
+	border: 1px solid #2b1e1e;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	      box-shadow: 0 6px 12px green;
+    background-clip: padding-box;
     letter-spacing: 3px;
+    font-size: 19px;
+    cursor: pointer;
+    color:  black;
+   
 }
 
 .tt-suggestion {
     padding: 3px 20px;
-    font-size: 18px;
+    
     line-height: 24px;
-}
+} 
 
 .tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
-    color: blue;
-    background-color: #0097cf;
+  color: blue; 
+    background-color: #0097cf; 
 
-}
+};
 
 .tt-suggestion p {
     margin: 0;
-}
+} 
 
 
 

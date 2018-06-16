@@ -12,7 +12,7 @@ Description:
     After selecting their food items the user can search for recipes, via Edamam's API, that have those ingredients.  OpenFridge then gives links to the website where the recipe resides.
 
 Motivation:
-    We wanted to experiment andlearn new technologies like Firebase, New APIs and Auto-Complete functions.  This was a great platform to view these proccesses working together to make a viable product, and a website I would expect to see
+    We wanted to experiment and learn new technologies like Firebase, New APIs and Auto-Complete functions.  This was a great platform to view these proccesses working together to make a viable product, and a website I would expect to see
 
 Team Efforts
     The team was divided into three different focuses
@@ -34,9 +34,10 @@ Future of this project:
 
 Technologies currently being used in this project:
     Bootstrap - https://getbootstrap.com/
+    Typeahead - https://twitter.github.io/typeahead.js/
     Jquery - https://jquery.com/
     FontAwesome - https://fontawesome.com/
     Firebase -  https://firebase.google.com/
     Edamam - Recipe Provider - https://www.edamam.com/
-    Nutritionix -  Autocomplete feature - https://www.nutritionix.com/
+    Nutritionix -  Food list Database - https://www.nutritionix.com/
 
