@@ -64,9 +64,6 @@ $(document).ready(function () {
                 ulList.appendChild(button);
             });
 
-            $(".itembutton").on("click", function () {
-                $(".itembutton").addClass("itemSelected");
-            });
 
         }
         else {
@@ -79,6 +76,9 @@ $(document).ready(function () {
         }
     });
 
+    $(".itembutton").on("click", function () {
+        $(".itembutton").addClass("itemSelected");
+    });
 
 
     // Sign In 

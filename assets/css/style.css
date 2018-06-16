@@ -281,7 +281,7 @@ button {
 }
 
 .itemSelected {
-    background-color: transparent;
+    /* background-color: transparent; */
     border: none;
     color:green;
     padding: 7px 15px;
