@@ -26,11 +26,6 @@ $(document).ready(function () {
     var connectionsRef = database.ref("/connections");
     var connectedRef = database.ref(".info/connected");
 
-
-
-
-
-
     // Check if user is signed in
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -203,23 +198,6 @@ $(document).ready(function () {
         console.log(foodItem);
     }
 
-    // dbRefItem.on('child_added', snap => consloe.log(snap.val()));
-
-    // function updateUserData(fridgeContent) {
-    //     const currentUser = firebase.auth().currentUser.uid;
-    //     const displayName = firebase.auth().currentUser.displayName;
-    //     const currentEmail = firebase.auth().currentUser.email;
-    //     var foodItem = "cheese";
-    //     console.log(displayName);
-    //     console.log(currentEmail);
-    //     console.log(currentUser);
-    //     const auth = firebase.auth();
-    //     firebase.database().ref(currentUser).child('fridgeContent').push({
-    //         item: foodItem
-
-    //     });
-    //     console.log(foodItem);
-    // }
 
 
     $("#signOutBtn").on("click", function () {
