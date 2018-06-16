@@ -35,8 +35,6 @@ $(document).ready(function () {
                             '<a href="' + (response.hits[i].recipe.url) + '" target="_blank" class="recipe-link">' +
 
                             '</div>' +
-
-
                             '<button type="button" class="btn btn-success btn-sm recipe-btn">See Recipe</button></a>' +
 
                             '</div>'
@@ -89,6 +87,3 @@ $(document).ready(function () {
         recipeGainer(itemArray);
     });
 });
-
-
-

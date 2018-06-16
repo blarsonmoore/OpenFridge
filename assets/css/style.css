@@ -27,18 +27,18 @@ body{
     background-repeat: no-repeat;
        
        /* tag below for working */
-     min-height: 29em;
+     min-height: 38em;
      border: solid;
      border-color: #17a2b8;
      border-top: none;
     
-     
+
     
     
 }
 #display-shopping-list{
     background-color: white;
-    min-height: 29em;
+    min-height: 38em;
 }
 
 
@@ -285,7 +285,7 @@ button {
     bottom:0;
 }
 
- .buttonClass {
+ /* .buttonClass {
     background-color: blue;
     border: none;
     color:black;
@@ -310,7 +310,7 @@ button {
     margin:3px;
 
   
-} 
+}  */
 #list{
     padding-top: 20%;
     padding-left: 15%;
@@ -328,6 +328,7 @@ button {
     border: 2px solid #ccc;
     /* border-radius: 8px; */
     outline: none;
+    
    
     
 }
@@ -357,7 +358,7 @@ button {
     line-height: 24px;
 }
 
-.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+.tt-suggestion.tt-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
     color: blue;
     background-color: #0097cf;
 

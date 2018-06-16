@@ -28,7 +28,7 @@ Future of this project:
 
         -Favorite's section.  A part of the server storage that stores the user's selected favorites and displays them on another tab.
 
-        -Inventory options.  We would like to work with the idea that a user could use this website like a "kitchen inventory" system.  The user could use this site as a method to remember what contents are at home, and to generate a shopping list based on specific recipes he/she selected. 
+        -Inventory options.  We would like to explore the idea where a user could use this website like a "kitchen inventory" system.  The user could use this site as a method to remember what contents are at home, and to generate a shopping list based on specific recipes he/she selected. 
 
     
 
