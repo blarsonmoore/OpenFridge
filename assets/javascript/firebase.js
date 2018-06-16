@@ -11,7 +11,7 @@ $(document).ready(function () {
     };
 
     firebase.initializeApp(config);
-    console.log(firebase);
+    console.log("firebase" + firebase);
 
 
     var database = firebase.database();
@@ -29,19 +29,23 @@ $(document).ready(function () {
 
 
 
+
+
     // Check if user is signed in
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
 
+
             $("#signOutBtn").removeClass("d-none");
             $("#signedIn").addClass("d-none");
             $("#createNewAccount").addClass("d-none");
             var user = firebase.auth().currentUser.uid;
-            console.log(user);
+            var displayName = firebase.auth().currentUser.displayName;
+            greetUser(displayName);
             const preObject = document.getElementById('object');
             const ulList = document.getElementById('list');
-
+            console.log(displayName + "    is logged in");
             const dbRefObject = firebase.database().ref().child('users');
             console.log(dbRefObject);
             const dbRefList = dbRefObject.child(user);
@@ -49,21 +53,22 @@ $(document).ready(function () {
             console.log(dbRefItem);
             console.log(dbRefList);
 
-            
+
+
             dbRefList.on('child_added', snap => {
                 var key = snap.key;
                 console.log(key);
                 const button = document.createElement('button');
                 button.innerText = snap.val().item;
                 button.value = snap.val().item;
-                button.className = "buttonClass";
-                button.id = "newClass";
+                button.className = "btn fridge-btn btn-sm btn-outline-dark";
+                // button.id = "newClass";
                 button.type = "button";
-               
+
                 ulList.appendChild(button);
             });
-            
-            
+
+
             // const liChanged = document.getElementById(snap.key);
             // $("#greet-user").empty().text(displayName).addClass("bg-success").removeClass("bg-info");
         }
@@ -73,19 +78,29 @@ $(document).ready(function () {
             $("#signedIn").removeClass("d-none");
             $("#createNewAccount").removeClass("d-none");
             $("#greet-user").text("Please Sign In").addClass("bg-info").removeClass("bg-success");
-            
+            goodbyeUser(user)
         }
     });
-    
 
+    function greetUser(displayName) {
+        $("#fridge-img").attr("src", "./assets/images/fridge-open.jpg");
+        $("#greet-user").text(displayName + " !!");
+        $("#welcome-card").removeClass("bg-info").addClass("bg-success");
+        $("#foodTrash").show();
+    }
+    function goodbyeUser(user) {
+        $("#fridge-img").attr("src", "./assets/images/fridge-closed.jpg");
+        $("#welcome-card").removeClass("bg-success").addClass("bg-info");
+        $("#foodTrash").hide();
+    }
     // $(document).on("click", "#newClass", function (e){
     //     console.log(e.target)
     //     var value = $("#newClass").val();
     //     console.log(value);
-        // var element = $("#newClass");
-        // element.removeClass("buttonClass");
-        // element.addClass("itemSelected");
-        
+    // var element = $("#newClass");
+    // element.removeClass("buttonClass");
+    // element.addClass("itemSelected");
+
     // });
 
     // Sign In 
@@ -101,8 +116,11 @@ $(document).ready(function () {
             user.updateProfile({
                 displayName: displayName
             }).then(function () {
+                $("#signInModal").modal('hide');
+                location.reload();
                 // Update successful.
             }, function (error) {
+                location.reload();
                 // An error happened.
             });
         });
@@ -126,9 +144,12 @@ $(document).ready(function () {
                 displayName: displayName
             }).then(function () {
                 // Update successful.
+                $("#createAccount").modal('hide');
+                location.reload();
             }, function (error) {
                 console.log("ERROR" + error.message)
                 // An error happened.
+                alert("DIDNT WORK")
             });
             // setTimeout(writeUserData, 1000)
         });
@@ -143,10 +164,14 @@ $(document).ready(function () {
 
     $("#addFridgeBtn").on("click", function (e) {
         e.preventDefault();
-        window.foodItem = $("#foodList").val().trim();
-        console.log(window.foodItem);
-        updateUserData();
-        $("#foodList").val("");
+        if ($("#foodList").val() === "") {
+            console.log("Blank");
+        } else {
+            window.foodItem = $("#foodList").val().trim();
+            console.log(window.foodItem);
+            updateUserData();
+            $("#foodList").val("");
+        }
     });
 
 
@@ -168,14 +193,7 @@ $(document).ready(function () {
         });
     }
 
-    // function updateUserData() {
-    //     var rootRef = firebase.database().ref();
-    //     var storeRef rootRef.child()
-    //     firebase.database().ref(currentUser).child('fridgeContent').push({
-    //         item: window.foodItem
-    //     });
-    //     console.log(foodItem);
-    // }
+
 
     function updateUserData(fridgeContent) {
         const currentUser = firebase.auth().currentUser.uid;

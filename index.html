@@ -12,13 +12,16 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Jquery / Bootstrap / Google Docs Links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-    crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-      
+
     <link href="https://fonts.googleapis.com/css?family=Anton|Pacifico" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -169,7 +172,7 @@
                 <div class="card card-dark bg-info rounded-circle" id="welcome-card">
                     <div class="card-body">
                         <h3> Welcome </h3>
-                        <h5 id="greet-user">Please Sign in</h5>
+                        <h2 id="greet-user">Please Sign in</h2>
                     </div>
                 </div>
             </div>
@@ -188,61 +191,28 @@
                                 <!-- JH created an id of foodlist -->
                                 <input type="text" class="form-control typeahead" id="foodList" placeholder="Food">
                             </div>
-                            <!-- <div class="col"> -->
-                            <!-- JH created an id of qty -->
-                            <!-- <input type="text" class="form-control" id="qtyList" placeholder="qty(optional)">
-                            </div> -->
+
                         </div>
-                        <!-- <div id="unit-buttons">
-                            <input type="radio" name="unit-btn" value="grams"> grams
-                            <br>
-                            <input type="radio" name="unit-btn" value="ml"> ml
-                            <br>
-                            <input type="radio" name="unit-btn" value="each"> each
-                        </div> -->
-                        <!-- JH created an ID of submitBtn -->
-                        <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                            Tooltip on top
-                        </button> -->
-                        <button type="button" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
+
+                        <button type="submit" class="btn btn-default btn-success" id="addFridgeBtn" style="margin: 4px">add to Fridge</button>
                     </form>
+                </div>
+                <div class="card border-primary text-center mb-3 bg-info card-padding">
+                    <h5>Select ingredients from the fridge below. Then click the Button On the Recipe tag to see what we've found</h5>
                 </div>
                 <div class="card border-primary mb-3">
                     <img id="fridge-img" class="card-img" src="assets/images/fridge-open.jpg" alt="open-fridge">
                     <div class="card-img-overlay" id="fridge-div" style="overflow-y:auto;">
-                        <table class="table table-striped table-sm" id="fridge-table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th style="width: 15%" scope="col"> Select</th>
-                                    <th style="width: 40%; text-align: center" scope=" col ">Food</th>
-                                    <th style="width: 15%; text-align: left" scope="col"></th>
-                                    <th style="width: 10%" scope="col"></th>
-                                    <th style="width: 10%" scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="text-align: center; overflow-y: auto">
-                                    <td>
-                                        <div class="checkbox select-ingredient checkbox-success">
-                                            <input type="checkbox" id="checkbox1" class="styled" value="chicken">
-                                            <label></label>
-                                        </div>
-                                    </td>
-                                    <td>Chicken</td>
 
-                                    <td>
-                                        <button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
 
                         <div id="list"></div>
-                        
+                        <button id="foodTrash" type="button" class="btn  btn-danger" data-toggle="tooltip" data-placement="bottom" title="Click to Delete Selected Ingredients">
+                            <i class="fa fa-trash"></i>
+                        </button>
                     </div>
                 </div>
+
+
             </div>
             <!-- The column below will house the recipe sections, the log in and the shopping list -->
 
@@ -452,9 +422,9 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <script src="./assets/javascript/logic.js"></script>
     <script src="./assets/javascript/autocomplete.js"></script>
     <script src="./assets/javascript/firebase.js"></script>

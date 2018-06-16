@@ -1,20 +1,5 @@
 $(document).ready(function () {
 
-    console.log("I'm Working");
-
-    // secondary tag navigation / hides/displays cards based on navigation clicking
-    function hideDisplay(tab) {
-        $(".work-box-card").hide()
-        $(tab).show();
-    }
-
-    $(".recipe-tab").on("click", function () { hideDisplay("#recipe-card") });
-
-    $(".shopping-list-tab").on("click", function () { hideDisplay("#shopping-list-card") });
-
-    
-    
-
     // Creating a variable that holds an array of all of the search items
 
 
@@ -40,60 +25,30 @@ $(document).ready(function () {
                 } else {
                     for (i = 0; i < response.hits.length; i++) {
 
+                        $("#recipe-display").append(
 
-                        $.ajax({
-                            url: queryURL,
-                            method: "GET",
-                            dataType: 'json'
-                        })
-                            .then(function (response) {
-                                console.log(queryURL);
-                                for (i = 0; i < response.hits.length; i++) {
+                            '<div class="card  mb-3 displayed-recipes">' +
+                            '<img class="card-img" src=' + (response.hits[i].recipe.image) + '>' +
+                            '<div class="card-img-overlay">' +
+                            '<div class="card-header text-center recipe-header"><h5>' +
+                            (response.hits[i].recipe.label) + '</h5>' +
+                            '<a href="' + (response.hits[i].recipe.url) + '" target="_blank" class="recipe-link">' +
 
-
-
-                                    $("#recipe-display").append(
-
-                                        '<div class="card  mb-3 displayed-recipes">' +
-                                        '<img class="card-img" src=' + (response.hits[i].recipe.image) + '>' +
-                                        '<div class="card-img-overlay">' +
-                                        '<div class="card-header text-center recipe-header"><h5>' +
-                                        (response.hits[i].recipe.label) + '</h5>' +
-                                        '<a href="' + (response.hits[i].recipe.url) + '" target="_blank" class="recipe-link">' +
-
-                                        '</div>' +
+                            '</div>' +
 
 
-                                        '<button type="button" class="btn btn-success btn-sm recipe-btn">See Recipe</button></a>' +
+                            '<button type="button" class="btn btn-success btn-sm recipe-btn">See Recipe</button></a>' +
 
-                                        '</div>'
-                                    )
-                                    console.log(response.hits[i].recipe);
-                                }
-                            })
-                    }
+                            '</div>'
+                        )
+                        console.log(response.hits[i].recipe);
+
+                    };
                 }
-                ;
 
+            })
+    };
 
-
-                console.log(response.hits[i].recipe);
-            }
-
-            )
-    }
-
-    ;
-
-
-
-    function addNewItem(item, quantity, unit) {
-        $("#fridge-table").append('<tr style="text-align: center; overflow-y: auto"><td><div class="checkbox select-ingredient checkbox-success"><input type="checkbox" class="fridge-checkbox" class="styled" value =' + item + '><label></label></div></td><td>'
-            + item + '</td><td>'
-            + quantity + '</td><td>'
-            + unit + '</td><td><button type="button" class="close  remove-item" data-toggle="tooltip" data-placement="right" title="click to delete"><span aria-hidden="true">&times;</span></button> </td></tr>')
-
-    }
     function removeItem() {
         // on click function that removes row when x is clicked inside the fridge items table
     }
@@ -110,16 +65,16 @@ $(document).ready(function () {
 
 
     // Newly added Javascript for fridge content buttons
-    $(document).on('click', '.buttonClass', function () {
-        $(this).removeClass('buttonClass').addClass('buttonSelected');
+    $(document).on('click', '.btn-outline-dark', function () {
+        $(this).removeClass('btn-outline-dark').addClass('btn-warning');
         var value = $(this).val();
         console.log(value);
         itemArray.push(value);
         console.log(itemArray);
     });
-    
-    $(document).on('click', '.buttonSelected', function () {
-        $(this).removeClass('buttonSelected').addClass('buttonClass');
+
+    $(document).on('click', '.btn-warning', function () {
+        $(this).removeClass('btn-warning').addClass('btn-outline-dark');
         var rmValue = $(this).val();
         console.log(rmValue);
         var idx = itemArray.indexOf(rmValue);
@@ -131,7 +86,7 @@ $(document).ready(function () {
 
     $("#recipe-search").on("click", function (e) {
         e.preventDefault();
-            recipeGainer(itemArray);
+        recipeGainer(itemArray);
     });
 });
 
