@@ -123,19 +123,24 @@ th td {
     border-width: 4px !important;
     border-color: black !important;
     color: white;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px white;
     max-height: 22em;  
     box-shadow: 3px 3px 3px grey
 }
 .recipe-header{
-    background-color: #17a2b8 !important;
-   opacity: .7;
+    background-color: #60e0f3 !important;
+   opacity: .8;
    position: absolute;
    top:0;
    left:0;
    width: 100%;
+   color:black
+   /* display: none; */
 
 }
+
+
+
 .workbox-header{
     border-bottom: none !important;
     
@@ -236,6 +241,9 @@ button {
     margin:auto;
 
 }
+.card-padding{
+    padding: 8px;
+}
 
 .bottom-center{
 
@@ -264,8 +272,18 @@ button {
     font-size: 12px;
     text-align: left;
 }
+.fridge-btn{
+    opacity: .9;
+    cursor: pointer;
+     margin:3px; 
 
 
+    }
+#foodTrash{
+    position: absolute;
+    right:0;
+    bottom:0;
+}
 
  .buttonClass {
     background-color: blue;
@@ -276,10 +294,9 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-    cursor: pointer;
-    margin:3px; 
-} 
 
+
+  }   
 .buttonSelected {
     background-color: transparent;
     border: none;
@@ -292,7 +309,15 @@ button {
     cursor: pointer;
     margin:3px;
 
+  
+} 
+#list{
+    padding-top: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
+
+
 
 .tt-query, 
 .tt-hint {
