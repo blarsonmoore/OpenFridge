@@ -364,16 +364,18 @@ button {
     background-clip: padding-box;
     letter-spacing: 3px;
     font-size: 19px;
+    /* font-family: 'Encode Sans Semi Expanded', sans-serif; */
+    font-weight: 100;
+    
     cursor: pointer;
     color:  black;
    
 }
 
-.tt-suggestion {
-    padding: 3px 20px;
-    
-    line-height: 24px;
-} 
+.tt-suggestion strong {
+    font-weight: bold;
+    color: #17a2b8;
+  }
 
 .tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
   color: blue; 
